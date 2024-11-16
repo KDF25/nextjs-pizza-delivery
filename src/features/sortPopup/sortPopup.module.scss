@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  align-items: center;
+  justify-content: start;
+  grid-auto-flow: column;
+  column-gap: 4px;
+  padding: 0 20px;
+  height: 52px;
+  border-radius: 15px;
+  background-color: var(--bg-lightgray);
+  cursor: pointer;
+
+  .popular {
+    color: hsl(var(--primary));
+  }
+}

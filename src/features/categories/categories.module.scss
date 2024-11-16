@@ -1,0 +1,24 @@
+.wrapper {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 4px;
+  background-color: var(--bg-lightgray);
+  border-radius: 15px;
+  padding: 4px;
+
+  a {
+    display: grid;
+    align-items: center;
+    font-weight: bold;
+    height: 44px;
+    border-radius: 15px;
+    padding: 0 20px;
+
+    &.active {
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 6px rgba(203, 213, 225, 0.2);
+      color: hsl(var(--primary));
+    }
+  }
+}

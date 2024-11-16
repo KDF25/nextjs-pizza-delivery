@@ -1,0 +1,15 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  padding: 20px;
+  z-index: 10;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+
+  .container {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

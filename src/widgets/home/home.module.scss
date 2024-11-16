@@ -1,0 +1,10 @@
+.container {
+  margin-top: 40px;
+  display: grid;
+  grid-auto-flow: row;
+
+  .title {
+    font-size: var(--title-lg);
+    font-weight: 700;
+  }
+}
