@@ -1,7 +1,7 @@
-import { cn } from '@/src/shared';
+import { cn } from '@shared/lib';
+import { ArrowUpDown } from 'lucide-react';
 import { FC } from 'react';
 import styles from './sortPopup.module.scss';
-import { ArrowUpDown } from 'lucide-react';
 
 interface SortPopupProps {
   className?: string;

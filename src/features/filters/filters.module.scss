@@ -1,0 +1,16 @@
+.wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 10px;
+
+  .title {
+    font-size: var(--title-sm);
+    font-weight: bold;
+  }
+
+  .checkbox__wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 16px;
+  }
+}

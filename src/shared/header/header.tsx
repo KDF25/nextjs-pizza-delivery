@@ -1,9 +1,8 @@
+import { Button, Container } from '@shared/ui';
+import { ArrowRight, ShoppingCart, User } from 'lucide-react';
 import Image from 'next/image';
 import { FC } from 'react';
-import { Container } from '../container';
-import { Button } from '../shadcn-ui';
 import styles from './header.module.scss';
-import { ArrowRight, ShoppingCart, User } from 'lucide-react';
 
 export const Header: FC = () => {
   return (

@@ -1,9 +1,7 @@
-import { Categories, SortPopup, TopBar } from '@/src/features';
-import { Container } from '@/src/shared';
 import { FC } from 'react';
+import { ParametersFilter, TopBar } from './components';
 import styles from './home.module.scss';
-
-// interface HomeProps {}
+import { Container } from '@shared/ui';
 
 export const Home: FC = () => {
   return (
@@ -11,7 +9,13 @@ export const Home: FC = () => {
       <Container className={styles.container}>
         <h1 className={styles.title}>Все пиццы</h1>
       </Container>
-      <TopBar CategoriesBar={Categories} SortBar={SortPopup} />
+      <TopBar />
+
+      <Container className={styles.content__wrapper}>
+        <div className={styles.content}>
+          <ParametersFilter />
+        </div>
+      </Container>
       {/* <div style={{ height: "3100px" }}></div> */}
     </>
   );

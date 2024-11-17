@@ -1,4 +1,4 @@
-import { cn } from '@/src/shared';
+import { cn } from '@shared/lib';
 import * as React from 'react';
 import styles from './container.module.scss';
 
