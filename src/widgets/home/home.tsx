@@ -14,6 +14,7 @@ export const Home: FC = () => {
       <Container className={styles.content__wrapper}>
         <div className={styles.content}>
           <ParametersFilter />
+          <p>dd</p>
         </div>
       </Container>
       {/* <div style={{ height: "3100px" }}></div> */}
