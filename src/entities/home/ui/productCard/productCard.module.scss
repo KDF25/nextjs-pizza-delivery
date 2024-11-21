@@ -1,0 +1,50 @@
+.wrapper {
+  height: 100%;
+
+  .card {
+    display: grid;
+    grid-template-rows: repeat(2, max-content) 1fr max-content;
+    row-gap: 10px;
+    height: 100%;
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      padding: 25px;
+      border-radius: 15px;
+      height: 260px;
+      background: hsl(var(--secondary));
+
+      img {
+        width: 215px;
+        height: 215px;
+      }
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: var(--title-md);
+    }
+
+    .text {
+      font-size: var(--title-sm);
+    }
+
+    .bottom {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .button {
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 5px;
+
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

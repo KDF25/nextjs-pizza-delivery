@@ -1,7 +1,8 @@
-import { FC } from 'react';
-import { ParametersFilter, TopBar } from './components';
-import styles from './home.module.scss';
+import { CATEGORIES, pizza } from '@shared/config';
 import { Container } from '@shared/ui';
+import { FC } from 'react';
+import { ParametersFilter, ProductCardList, TopBar } from './components';
+import styles from './home.module.scss';
 
 export const Home: FC = () => {
   return (
@@ -13,8 +14,23 @@ export const Home: FC = () => {
 
       <Container className={styles.content__wrapper}>
         <div className={styles.content}>
-          <ParametersFilter />
-          <p>dd</p>
+          <div>
+            <ParametersFilter />
+          </div>
+          <div>
+            <div className={styles.products__wrapper}>
+              <ProductCardList
+                categoryId={CATEGORIES[0].id}
+                title={CATEGORIES[0].name}
+                items={pizza}
+              />
+              <ProductCardList
+                categoryId={CATEGORIES[1].id}
+                title={CATEGORIES[1].name}
+                items={pizza}
+              />
+            </div>
+          </div>
         </div>
       </Container>
       {/* <div style={{ height: "3100px" }}></div> */}

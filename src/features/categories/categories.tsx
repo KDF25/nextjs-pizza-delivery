@@ -1,3 +1,7 @@
+'use client';
+
+import { useCategoryStore } from '@entities/home';
+import { CATEGORIES } from '@shared/config';
 import { FC } from 'react';
 import styles from './categories.module.scss';
 
@@ -5,19 +9,18 @@ interface CategoriesProps {
   props?: string;
 }
 
-const cats = ['Пиццы', 'Комбо', 'Закуски'];
-const activeIndex = 0;
-
 export const Categories: FC<CategoriesProps> = () => {
+  const categoryActiveId = useCategoryStore((state) => state.activeId);
+
   return (
     <div className={styles.wrapper}>
-      {cats.map((cat, index) => (
+      {CATEGORIES.map((cat, index) => (
         <a
-          href=""
-          className={activeIndex === index ? styles.active : ''}
+          href={`/#${cat.name}`}
+          className={categoryActiveId === index + 1 ? styles.active : ''}
           key={index}
         >
-          <button>{cat}</button>
+          <button>{cat.name}</button>
         </a>
       ))}
     </div>

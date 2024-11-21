@@ -17,5 +17,11 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     column-gap: 60px;
+
+    .products__wrapper {
+      display: grid;
+      grid-auto-flow: row;
+      row-gap: 20px;
+    }
   }
 }
