@@ -7,9 +7,14 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,scss}'",
     "build": "npm run format && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:generate": "npx prisma generate --schema=src/shared/database/prisma/schema.prisma",
+    "prisma:push": "npx prisma db push --schema=src/shared/database/prisma/schema.prisma",
+    "prisma:migrate": "npx prisma migrate dev --schema=src/shared/database/prisma/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema=src/shared/database/prisma/schema.prisma"
   },
   "dependencies": {
+    "@prisma/client": "^5.22.0",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-popover": "^1.1.2",
@@ -20,6 +25,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
+    "prisma": "^5.22.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-use": "^17.5.1",
