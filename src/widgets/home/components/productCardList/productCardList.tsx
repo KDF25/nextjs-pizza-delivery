@@ -27,7 +27,7 @@ export const ProductCardList: FC<ProductCardListProps> = ({
     if (intersection?.isIntersecting) {
       setActiveCategoryId(categoryId);
     }
-  }, [categoryId, intersection?.isIntersecting, title]);
+  }, [categoryId, intersection?.isIntersecting, setActiveCategoryId]);
 
   return (
     <div className={styles.wrapper} id={title} ref={intersectionRef}>

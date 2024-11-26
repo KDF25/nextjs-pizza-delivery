@@ -2,6 +2,7 @@ import { IProductCard } from '@entities/home';
 import { cn } from '@shared/lib';
 import { Button } from '@shared/ui';
 import { Plus } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import styles from './productCard.module.scss';
@@ -16,7 +17,7 @@ export const ProductCard: FC<ProductCardProps> = ({ item, className }) => {
     <div className={cn(className, styles.wrapper)}>
       <Link href={`/product/${item?.id}`} className={styles.card}>
         <div className={styles.logo}>
-          <img src={item?.imageUrl} alt="product" />
+          <Image src={item?.imageUrl} alt="product" width={215} height={215} />
         </div>
         <p className={styles.title}>{item?.name}</p>
         <span className={styles.text}>{item?.ingridients}</span>
