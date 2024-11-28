@@ -12,7 +12,8 @@
     "prisma:push": "npx prisma db push --schema=src/shared/database/prisma/schema.prisma",
     "prisma:migrate": "npx prisma migrate dev --schema=src/shared/database/prisma/schema.prisma",
     "prisma:studio": "npx prisma studio --schema=src/shared/database/prisma/schema.prisma",
-    "prisma:seed": "npx prisma db seed"
+    "prisma:seed": "npx prisma db seed",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} src/shared/database/prisma/seed.ts"
