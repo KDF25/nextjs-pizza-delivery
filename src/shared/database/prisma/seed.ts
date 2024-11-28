@@ -1,5 +1,11 @@
 import { prisma } from './client';
-import { _ingredients, categories, products } from './constants';
+import {
+  _ingredients,
+  categories,
+  pizzaTypes,
+  products,
+  sizes,
+} from './constants';
 import {
   CART,
   CART_ITEM,
@@ -23,6 +29,14 @@ async function up() {
 
   await prisma.ingredient.createMany({
     data: _ingredients,
+  });
+
+  await prisma.size.createMany({
+    data: sizes,
+  });
+
+  await prisma.pizzaType.createMany({
+    data: pizzaTypes,
   });
 
   await prisma.product.createMany({
@@ -104,6 +118,8 @@ async function down() {
   await prisma.$executeRaw`TRUNCATE TABLE "Cart" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "CartItem" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Ingredient" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "PizzaType" RESTART IDENTITY CASCADE`;
+  await prisma.$executeRaw`TRUNCATE TABLE "Size" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "Product" RESTART IDENTITY CASCADE`;
   await prisma.$executeRaw`TRUNCATE TABLE "ProductItem" RESTART IDENTITY CASCADE`;
 }

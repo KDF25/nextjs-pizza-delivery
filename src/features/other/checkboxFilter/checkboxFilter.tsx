@@ -1,9 +1,14 @@
 'use client';
 
+import { cn } from '@shared/lib';
+import {
+  FilterChecboxProps,
+  FilterCheckbox,
+  Input,
+  Skeleton,
+} from '@shared/ui';
 import { FC, useState } from 'react';
 import styles from './checkboxFilter.module.scss';
-import { FilterChecboxProps, FilterCheckbox, Input } from '@shared/ui';
-import { cn } from '@shared/lib';
 
 type Item = FilterChecboxProps;
 
@@ -28,7 +33,7 @@ export const CheckboxFilter: FC<CheckboxFilterProps> = ({
   limit = 5,
   searchInputPlaceholder = 'Поиск...',
   className,
-  //   loading,
+  loading,
   onClickCheckbox,
   selected,
   name,
@@ -40,19 +45,21 @@ export const CheckboxFilter: FC<CheckboxFilterProps> = ({
     setSearchValue(e.target.value);
   };
 
-  // if (loading) {
-  //   return (
-  //     <div className={className}>
-  //       <p className="font-bold mb-3">{title}</p>
-
-  //       {...Array(limit)
-  //         .fill(0)
-  //         .map((_, index) => <Skeleton key={index} className="h-6 mb-4 rounded-[8px]" />)}
-
-  //       <Skeleton className="w-28 h-6 mb-4 rounded-[8px]" />
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className={cn(className, styles.wrapper)}>
+        <p>{title}</p>
+        <div className={styles.items}>
+          {...Array(limit)
+            .fill(0)
+            .map((_, index) => (
+              <Skeleton key={index} className="h-6 rounded-[8px]" />
+            ))}
+          {!!defaultItems && <Skeleton className="w-28 h-6rounded-[8px]" />}
+        </div>
+      </div>
+    );
+  }
 
   const list = showAll
     ? items.filter((item) =>

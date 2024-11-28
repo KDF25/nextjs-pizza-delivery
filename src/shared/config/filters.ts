@@ -6,4 +6,14 @@ export const DEFAULT_VALUES = {
     max: 1000,
     step: 10,
   },
+
+  category: {
+    limit: 6,
+  },
+  sizes: {
+    limit: 3,
+  },
+  pizzaTypes: {
+    limit: 2,
+  },
 };

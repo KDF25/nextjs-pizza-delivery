@@ -80,6 +80,16 @@ model Ingredient {
     updatedAt DateTime @updatedAt
 }
 
+model Size {
+    id   Int    @id @default(autoincrement())
+    name String
+}
+
+model PizzaType {
+    id   Int    @id @default(autoincrement())
+    name String
+}
+
 model Cart {
     id Int @id @default(autoincrement())
 

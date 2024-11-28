@@ -16,6 +16,32 @@ export const categories = [
   },
 ];
 
+export const sizes = [
+  {
+    name: '20 см',
+    id: 20,
+  },
+  {
+    name: '30 см',
+    id: 30,
+  },
+  {
+    name: '40 см',
+    id: 40,
+  },
+];
+
+export const pizzaTypes = [
+  {
+    name: 'Тонкое',
+    id: 1,
+  },
+  {
+    name: 'Традиционное',
+    id: 2,
+  },
+];
+
 export const _ingredients = [
   {
     name: 'Сырный бортик',

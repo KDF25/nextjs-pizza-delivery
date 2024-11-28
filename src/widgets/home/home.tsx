@@ -1,12 +1,14 @@
+'use client';
+
 import { CATEGORIES, pizza } from '@shared/config';
 import { Container } from '@shared/ui';
-import { FC } from 'react';
+import { FC, Suspense } from 'react';
 import { ParametersFilter, ProductCardList, TopBar } from './components';
 import styles from './home.module.scss';
 
 export const Home: FC = () => {
   return (
-    <>
+    <Suspense>
       <Container className={styles.container}>
         <h1 className={styles.title}>Все пиццы</h1>
       </Container>
@@ -34,6 +36,6 @@ export const Home: FC = () => {
         </div>
       </Container>
       {/* <div style={{ height: "3100px" }}></div> */}
-    </>
+    </Suspense>
   );
 };
