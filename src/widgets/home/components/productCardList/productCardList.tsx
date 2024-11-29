@@ -1,14 +1,15 @@
 'use client';
 
-import { IProductCard, useCategoryStore } from '@entities/home';
+import { useCategoryStore } from '@entities/home';
 import { ProductCard } from '@entities/home/ui/productCard';
+import { ProductWithRelations } from '@entities/productForm';
 import { FC, useEffect, useRef } from 'react';
 import { useIntersection } from 'react-use';
 import styles from './productCardList.module.scss';
 
 interface ProductCardListProps {
   title: string;
-  items: IProductCard[];
+  items: ProductWithRelations[];
   categoryId: number;
 }
 

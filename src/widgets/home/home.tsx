@@ -1,12 +1,21 @@
-'use client';
-
-import { CATEGORIES, pizza } from '@shared/config';
 import { Container } from '@shared/ui';
 import { FC, Suspense } from 'react';
 import { ParametersFilter, ProductCardList, TopBar } from './components';
 import styles from './home.module.scss';
+import { prisma } from '@shared/database';
 
-export const Home: FC = () => {
+export const Home: FC = async () => {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          ingredients: true,
+          items: true,
+        },
+      },
+    },
+  });
+
   return (
     <Suspense>
       <Container className={styles.container}>
@@ -21,16 +30,17 @@ export const Home: FC = () => {
           </div>
           <div>
             <div className={styles.products__wrapper}>
-              <ProductCardList
-                categoryId={CATEGORIES[0].id}
-                title={CATEGORIES[0].name}
-                items={pizza}
-              />
-              <ProductCardList
-                categoryId={CATEGORIES[1].id}
-                title={CATEGORIES[1].name}
-                items={pizza}
-              />
+              {categories.map(
+                (category) =>
+                  category.products.length > 0 && (
+                    <ProductCardList
+                      key={category.id}
+                      title={category.name}
+                      categoryId={category.id}
+                      items={category.products}
+                    />
+                  )
+              )}
             </div>
           </div>
         </div>

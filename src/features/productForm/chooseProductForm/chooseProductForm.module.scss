@@ -1,0 +1,44 @@
+.wrapper {
+  display: flex;
+  flex: 1;
+
+  .imageWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+    width: 100%;
+
+    .image {
+      position: relative;
+      left: 8px;
+      top: 8px;
+      transition: all 0.3s;
+      z-index: 10;
+    }
+  }
+
+  .details {
+    width: 490px;
+    background-color: #f7f6f5;
+    padding: 28px;
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 5px;
+
+    .title {
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .button {
+      height: 55px;
+      padding: 0 40px;
+      font-size: 16px;
+      border-radius: 18px;
+      width: 100%;
+      // margin-top: 40px;
+    }
+  }
+}

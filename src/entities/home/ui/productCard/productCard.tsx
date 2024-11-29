@@ -1,4 +1,3 @@
-import { IProductCard } from '@entities/home';
 import { cn } from '@shared/lib';
 import { Button } from '@shared/ui';
 import { Plus } from 'lucide-react';
@@ -6,9 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import styles from './productCard.module.scss';
+import { ProductWithRelations } from '@entities/productForm';
 
 interface ProductCardProps {
-  item: IProductCard;
+  item: ProductWithRelations;
   className?: string;
 }
 
@@ -20,10 +20,10 @@ export const ProductCard: FC<ProductCardProps> = ({ item, className }) => {
           <Image src={item?.imageUrl} alt="product" width={215} height={215} />
         </div>
         <p className={styles.title}>{item?.name}</p>
-        <span className={styles.text}>{item?.ingridients}</span>
+        {/* <span className={styles.text}>{item?.ingridients}</span> */}
         <div className={styles.bottom}>
-          <span className="text-[20px]">
-            от <b>300 ₽</b>
+          <span className={styles.text}>
+            от <b>{item?.items[0].price} ₽</b>
           </span>
 
           <Button variant="secondary" className={styles.button}>

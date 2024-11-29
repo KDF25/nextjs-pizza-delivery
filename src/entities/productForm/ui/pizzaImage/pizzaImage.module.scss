@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  position: relative;
+  width: 100%;
+
+  .image {
+    position: relative;
+    left: 2px;
+    top: 2px;
+    z-index: 10;
+    transition: all 0.3s ease;
+
+    &.size20 {
+      width: 300px;
+      height: 300px;
+    }
+
+    &.size30 {
+      width: 400px;
+      height: 400px;
+    }
+
+    &.size40 {
+      width: 500px;
+      height: 500px;
+    }
+  }
+
+  .outerCircle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px dashed #e5e7eb; // gray-200
+    border-radius: 50%;
+    width: 450px;
+    height: 450px;
+  }
+
+  .innerCircle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px dotted #f3f4f6; // gray-100
+    border-radius: 50%;
+    width: 370px;
+    height: 370px;
+  }
+}

@@ -1,6 +1,3 @@
-import type { Metadata } from 'next';
-
-import { Header } from '@shared/header';
 import '@shared/styles/globals.scss';
 import { Nunito } from 'next/font/google';
 
@@ -10,11 +7,6 @@ const nunito = Nunito({
   weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-export const metadata: Metadata = {
-  title: 'PIZZA DELIVERY  | Главная',
-  description: '',
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,12 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${nunito.variable}`}>
-        <main className="min-h-screen">
-          <Header />
-          {children}
-        </main>
-      </body>
+      <body className={`${nunito.variable}`}>{children}</body>
     </html>
   );
 }

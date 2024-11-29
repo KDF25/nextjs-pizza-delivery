@@ -33,8 +33,6 @@ export const ParametersFilter: FC = () => {
 
   useQueryFilters(filters);
 
-  console.log(filters);
-
   return (
     <div className={styles.wrapper}>
       <CheckboxFilter
