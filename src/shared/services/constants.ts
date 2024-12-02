@@ -3,4 +3,5 @@ export enum ApiRoutes {
   INGREDIENTS = 'ingredients',
   SIZES = 'sizes',
   PIZZA_TYPES = 'pizzaTypes',
+  CART = 'cart',
 }

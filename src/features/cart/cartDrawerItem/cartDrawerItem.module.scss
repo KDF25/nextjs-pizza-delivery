@@ -1,0 +1,42 @@
+.wrapper {
+  display: flex;
+  background-color: #fff;
+  padding: 20px;
+  gap: 24px;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .content {
+    flex: 1;
+
+    .divider {
+      margin: 12px 0;
+      border: none;
+      border-top: 1px solid #e5e7eb; // light gray
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .price {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .trash__icon {
+          color: #9ca3af;
+          cursor: pointer;
+
+          &:hover {
+            color: #4b5563;
+          }
+        }
+      }
+    }
+  }
+}

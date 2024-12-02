@@ -1,10 +1,11 @@
-import { Button, Container } from '@shared/ui';
-import { ArrowRight, ShoppingCart, User } from 'lucide-react';
-import Image from 'next/image';
-import { FC } from 'react';
-import styles from './header.module.scss';
-import Link from 'next/link';
 import { SearchInput } from '@features/other';
+import { Button, Container } from '@shared/ui';
+import { User } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { FC } from 'react';
+import { CartButton } from './components';
+import styles from './header.module.scss';
 
 export const Header: FC = () => {
   return (
@@ -27,21 +28,7 @@ export const Header: FC = () => {
             <User size={16} />
             <p>Войти</p>
           </Button>
-          <div>
-            <Button className={styles.cart}>
-              <p>520 p</p>
-              <span className={styles.border} />
-              <div className={styles.items}>
-                <ShoppingCart
-                  className={styles.icon}
-                  size={16}
-                  strokeWidth={2}
-                />
-                <b>3</b>
-              </div>
-              <ArrowRight size={20} className={styles.arrow} />
-            </Button>
-          </div>
+          <CartButton />
         </div>
       </Container>
     </header>

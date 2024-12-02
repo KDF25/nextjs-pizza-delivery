@@ -1,4 +1,4 @@
-import { Header } from '@shared/header';
+import { Header } from '@shared/layouts/header';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

@@ -1,18 +1,13 @@
 'use client';
 
+import { useCartStore } from '@entities/cart';
 import { ProductWithRelations } from '@entities/productForm';
 import {
   ChoosePizzaForm,
   ChooseProductForm,
   Tabs,
 } from '@features/productForm';
-
-// import { ProductWithRelations } from '@/@types/prisma';
-// import { useCartStore } from '@/shared/store';
-// import React from 'react';
-// import toast from 'react-hot-toast';
-// import { ChoosePizzaForm } from './choose-pizza-form';
-// import { ChooseProductForm } from './choose-product-form';
+import toast from 'react-hot-toast';
 
 interface Props {
   product: ProductWithRelations;
@@ -21,30 +16,33 @@ interface Props {
 
 export const ProductForm: React.FC<Props> = ({
   product,
-  //   onSubmit: _onSubmit,
+  onSubmit: _onSubmit,
 }) => {
-  //   const [addCartItem, loading] = useCartStore((state) => [state.addCartItem, state.loading]);
+  const [addCartItem, loading] = useCartStore((state) => [
+    state.addCartItem,
+    state.loading,
+  ]);
 
   const firstItem = product.items[0];
   const isPizzaForm = Boolean(firstItem.pizzaType);
 
-  //   const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
-  //     try {
-  //       const itemId = productItemId ?? firstItem.id;
+  const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
+    try {
+      const itemId = productItemId ?? firstItem.id;
 
-  //       await addCartItem({
-  //         productItemId: itemId,
-  //         ingredients,
-  //       });
+      await addCartItem({
+        productItemId: itemId,
+        ingredients,
+      });
 
-  //       toast.success(product.name + ' добавлена в корзину');
+      toast.success(product.name + ' добавлена в корзину');
 
-  //       _onSubmit?.();
-  //     } catch (err) {
-  //       toast.error('Не удалось добавить товар в корзину');
-  //       console.error(err);
-  //     }
-  //   };
+      _onSubmit?.();
+    } catch (err) {
+      toast.error('Не удалось добавить товар в корзину');
+      console.error(err);
+    }
+  };
 
   if (isPizzaForm) {
     return (
@@ -54,8 +52,8 @@ export const ProductForm: React.FC<Props> = ({
         ingredients={product.ingredients}
         items={product.items}
         Tabs={Tabs}
-        // onSubmit={onSubmit}
-        // loading={loading}
+        onSubmit={onSubmit}
+        loading={loading}
       />
     );
   }
@@ -65,8 +63,8 @@ export const ProductForm: React.FC<Props> = ({
       imageUrl={product.imageUrl}
       name={product.name}
       price={firstItem.price}
-      //   onSubmit={onSubmit}
-      //   loading={loading}
+      onSubmit={onSubmit}
+      loading={loading}
     />
   );
 };

@@ -1,5 +1,5 @@
 import { Categories } from '@features/categories';
-import { SortPopup } from '@features/sortPopup';
+import { SortPopup } from '@features/other';
 import { Container } from '@shared/ui/container';
 import { FC } from 'react';
 import styles from './topBar.module.scss';

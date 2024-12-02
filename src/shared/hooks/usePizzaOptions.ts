@@ -1,7 +1,7 @@
+import { getAvailablePizzaSizes } from '@entities/home';
 import { TabsVariant } from '@entities/productForm';
 import { ProductItem } from '@prisma/client';
 import { PizzaSize, PizzaType } from '@shared/constants';
-import { getAvailablePizzaSizes } from '@shared/lib';
 import { useEffect, useState } from 'react';
 import { useSet } from 'react-use';
 

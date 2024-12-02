@@ -1,12 +1,13 @@
 'use client';
 
-import React, { FC } from 'react';
-import { Ingredient, ProductItem } from '@prisma/client';
-import { cn, getPizzaDetails } from '@shared/lib';
-import { Button } from '@shared/ui';
+import { getPizzaDetails } from '@entities/home';
 import { IngredientItem, PizzaImage, TabsProps } from '@entities/productForm';
-import { usePizzaOptions } from '@shared/hooks';
+import { Ingredient, ProductItem } from '@prisma/client';
 import { PizzaSize, PizzaType, pizzaTypes } from '@shared/constants';
+import { usePizzaOptions } from '@shared/hooks';
+import { cn } from '@shared/lib';
+import { Button } from '@shared/ui';
+import React, { FC } from 'react';
 import styles from './choosePizzaForm.module.scss';
 
 interface Props {
@@ -14,8 +15,8 @@ interface Props {
   name: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  // loading?: boolean;
-  // onSubmit: (itemId: number, ingredients: number[]) => void;
+  loading?: boolean;
+  onSubmit: (itemId: number, ingredients: number[]) => void;
   className?: string;
   Tabs: FC<TabsProps>;
 }
@@ -25,8 +26,8 @@ export const ChoosePizzaForm: React.FC<Props> = ({
   items,
   imageUrl,
   ingredients,
-  // loading,
-  // onSubmit,
+  loading,
+  onSubmit,
   className,
   Tabs,
 }) => {
@@ -35,7 +36,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     type,
     selectedIngredients,
     availableSizes,
-    // currentItemId,
+    currentItemId,
     setSize,
     setType,
     addIngredient,
@@ -49,11 +50,12 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     selectedIngredients
   );
 
-  // const handleClickAdd = () => {
-  //   if (currentItemId) {
-  //     onSubmit(currentItemId, Array.from(selectedIngredients));
-  //   }
-  // };
+  const handleClickAdd = () => {
+    if (currentItemId) {
+      onSubmit(currentItemId, Array.from(selectedIngredients));
+    }
+  };
+
   return (
     <div className={cn(className, styles.wrapper)}>
       <PizzaImage imageUrl={imageUrl} size={size} />
@@ -90,7 +92,11 @@ export const ChoosePizzaForm: React.FC<Props> = ({
           </div>
         </div>
 
-        <Button className={styles.button}>
+        <Button
+          loading={loading}
+          onClick={handleClickAdd}
+          className={styles.button}
+        >
           Добавить в корзину за {totalPrice} ₽
         </Button>
       </div>
