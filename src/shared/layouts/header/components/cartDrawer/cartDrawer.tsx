@@ -20,7 +20,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, PropsWithChildren, useState } from 'react';
-import styles from './CartDrawer.module.scss';
+import styles from './cartDrawer.module.scss';
 
 export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
   const { totalAmount, updateItemQuantity, items, removeCartItem } = useCart();
