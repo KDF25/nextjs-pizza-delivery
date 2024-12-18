@@ -1,4 +1,5 @@
 import { SearchInput } from '@features/other';
+import { cn } from '@shared/lib';
 import { Button, Container } from '@shared/ui';
 import { User } from 'lucide-react';
 import Image from 'next/image';
@@ -7,9 +8,19 @@ import { FC } from 'react';
 import { CartButton } from './components';
 import styles from './header.module.scss';
 
-export const Header: FC = () => {
+interface HeaderProps {
+  classname?: string;
+  hasSearch?: boolean;
+  hasCart?: boolean;
+}
+
+export const Header: FC<HeaderProps> = ({
+  classname,
+  hasSearch = true,
+  hasCart = true,
+}) => {
   return (
-    <header className={styles.wrapper}>
+    <header className={cn(styles.wrapper, classname)}>
       <Container className={styles.container}>
         <Link href={'/'} className={styles.left}>
           <Image src="/logo.png" alt="Logo" width={35} height={35} />
@@ -19,16 +30,14 @@ export const Header: FC = () => {
           </div>
         </Link>
 
-        <div className={styles.search}>
-          <SearchInput />
-        </div>
+        <div className={styles.search}>{hasSearch && <SearchInput />}</div>
 
         <div className={styles.right}>
           <Button variant="outline" className={styles.user}>
             <User size={16} />
             <p>Войти</p>
           </Button>
-          <CartButton />
+          {hasCart && <CartButton />}
         </div>
       </Container>
     </header>

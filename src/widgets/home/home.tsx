@@ -1,23 +1,17 @@
+import { findPizzas, GetSearchParams } from '@shared/lib';
 import { Container } from '@shared/ui';
 import { FC, Suspense } from 'react';
 import { ParametersFilter, ProductCardList, TopBar } from './components';
 import styles from './home.module.scss';
-import { prisma } from '@shared/database';
 
-export const Home: FC = async () => {
-  const categories = await prisma.category.findMany({
-    include: {
-      products: {
-        include: {
-          ingredients: true,
-          items: true,
-        },
-      },
-    },
-  });
+interface HomeProps {
+  searchParams: GetSearchParams;
+}
 
+export const Home: FC<HomeProps> = async ({ searchParams }) => {
+  const categories = await findPizzas(searchParams);
   return (
-    <Suspense>
+    <>
       <Container className={styles.container}>
         <h1 className={styles.title}>Все пиццы</h1>
       </Container>
@@ -26,7 +20,9 @@ export const Home: FC = async () => {
       <Container className={styles.content__wrapper}>
         <div className={styles.content}>
           <div>
-            <ParametersFilter />
+            <Suspense>
+              <ParametersFilter />
+            </Suspense>
           </div>
           <div>
             <div className={styles.products__wrapper}>
@@ -45,7 +41,6 @@ export const Home: FC = async () => {
           </div>
         </div>
       </Container>
-      {/* <div style={{ height: "3100px" }}></div> */}
-    </Suspense>
+    </>
   );
 };
