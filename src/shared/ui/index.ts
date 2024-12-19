@@ -4,6 +4,7 @@ export * from './container';
 export * from './countIcon';
 export * from './errorText';
 export * from './filterCheckbox';
+export * from './mail';
 export * from './rangeSlider';
 export * from './requiredSymbol';
 export * from './shadcn-ui';

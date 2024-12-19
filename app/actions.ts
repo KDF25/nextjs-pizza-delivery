@@ -1,6 +1,6 @@
 'use server';
 
-import { OrderStatus, Prisma } from '@prisma/client';
+import { OrderStatus } from '@prisma/client';
 import { CartFormValues } from '@shared/config';
 import { prisma } from '@shared/database';
 // import { hashSync } from 'bcrypt';
@@ -42,7 +42,7 @@ export async function createOrder(data: CartFormValues) {
     if (userCart?.totalAmount === 0) {
       throw new Error('Cart is empty');
     }
-    const order = await prisma.order.create({
+    await prisma.order.create({
       data: {
         token: cartToken,
         fullName: data.firstName + ' ' + data.lastName,

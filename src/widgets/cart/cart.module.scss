@@ -9,12 +9,12 @@
     font-weight: bold;
   }
 
-  .content{
+  .content {
     display: grid;
     grid-template-columns: 1fr 450px;
     column-gap: 40px;
 
-    .left{
+    .left {
       display: grid;
       grid-auto-flow: row;
       row-gap: 40px;

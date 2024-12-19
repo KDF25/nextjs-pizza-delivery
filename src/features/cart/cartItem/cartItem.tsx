@@ -11,7 +11,6 @@ import {
 import { X } from 'lucide-react';
 import { FC } from 'react';
 import styles from './cartItem.module.scss';
-import { cn } from '@shared/lib';
 
 interface Props extends CartItemProps {
   onClickCountButton?: (type: counterAction) => void;

@@ -4,7 +4,7 @@ import { counterAction } from '@entities/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cartFormSchema, CartFormValues } from '@shared/config';
 import { useCart } from '@shared/hooks';
-import { Container } from '@shared/ui';
+import { Container, mailForm } from '@shared/ui';
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -16,6 +16,7 @@ import {
   CartSidebar,
 } from './components';
 import { createOrder } from '../../../app/actions';
+import { Api } from '@shared/services';
 
 export const Cart: FC = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -49,6 +50,14 @@ export const Cart: FC = () => {
   //     fetchUserInfo();
   //   }
   // }, [session]);
+
+  const handle = async () => {
+    const form = mailForm('https://your-delivery-app-link.com');
+    await Api.mail.sendMail({
+      to: 'karimov.damir.faridovich@gmail.com',
+      ...form,
+    });
+  };
 
   const onSubmit = async (data: CartFormValues) => {
     // const onSubmit = async () => {
@@ -85,6 +94,7 @@ export const Cart: FC = () => {
 
   return (
     <Container className={styles.wrapper}>
+      <button onClick={handle}>ffffffffffffffffffff</button>
       <p className={styles.title}>Оформление заказа</p>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
