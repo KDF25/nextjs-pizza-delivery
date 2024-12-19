@@ -8,6 +8,7 @@ import { Container, mailForm } from '@shared/ui';
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { createOrder } from '../../../app/actions';
 import styles from './cart.module.scss';
 import {
   CartAddressForm,
@@ -15,7 +16,6 @@ import {
   CartPersonalForm,
   CartSidebar,
 } from './components';
-import { createOrder } from '../../../app/actions';
 import { Api } from '@shared/services';
 
 export const Cart: FC = () => {
@@ -51,27 +51,40 @@ export const Cart: FC = () => {
   //   }
   // }, [session]);
 
-  const handle = async () => {
-    const form = mailForm('https://your-delivery-app-link.com');
-    await Api.mail.sendMail({
-      to: 'karimov.damir.faridovich@gmail.com',
-      ...form,
-    });
-  };
+  // const handle = async () => {
+  //   const form = mailForm('https://your-delivery-app-link.com');
+  //   await Api.mail.sendMail({
+  //     to: 'karimov.damir.faridovich@gmail.com',
+  //     ...form,
+  //   });
+  // };
 
   const onSubmit = async (data: CartFormValues) => {
     // const onSubmit = async () => {
     try {
       setSubmitting(true);
 
-      const url = await createOrder(data);
+      const info = await createOrder(data);
 
-      toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
-        icon: '✅',
-      });
+      if (info) {
+        const [id, url] = info;
+        toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
+          icon: '✅',
+        });
 
-      if (url) {
-        location.href = url;
+        const form = mailForm(
+          'https://your-delivery-app-link.com',
+          id as number,
+          totalAmount
+        );
+        await Api.mail.sendMail({
+          to: data?.email,
+          ...form,
+        });
+
+        if (url) {
+          location.href = url as string;
+        }
       }
     } catch (err) {
       console.log(err);
@@ -94,7 +107,6 @@ export const Cart: FC = () => {
 
   return (
     <Container className={styles.wrapper}>
-      <button onClick={handle}>ffffffffffffffffffff</button>
       <p className={styles.title}>Оформление заказа</p>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>

@@ -42,7 +42,7 @@ export async function createOrder(data: CartFormValues) {
     if (userCart?.totalAmount === 0) {
       throw new Error('Cart is empty');
     }
-    await prisma.order.create({
+    const order = await prisma.order.create({
       data: {
         token: cartToken,
         fullName: data.firstName + ' ' + data.lastName,
@@ -65,7 +65,6 @@ export async function createOrder(data: CartFormValues) {
         totalAmount: 0,
       },
     });
-
     await prisma.cartItem.deleteMany({
       where: {
         cartId: userCart.id,
@@ -93,17 +92,7 @@ export async function createOrder(data: CartFormValues) {
 
     // const paymentUrl = paymentData.confirmation.confirmation_url;
 
-//     await sendEmail(
-//       data.email,
-//       'Next Pizza / Оплатите заказ #' + order.id,
-//       PayOrderTemplate({
-//         orderId: order.id,
-//         totalAmount: order.totalAmount,
-//         paymentUrl,
-//       }),
-//     );
-
-    return "paymentUrl";
+    return [order.id, "paymentUrl"];
   } catch (err) {
     console.log('[CreateOrder] Server error', err);
   }
