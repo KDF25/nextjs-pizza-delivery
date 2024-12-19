@@ -13,7 +13,7 @@ export default function CartLayout({
 }>) {
   return (
     <main className="min-h-screen bg-[#F4F1EE]">
-      <Header classname="border-gray-200" hasSearch={false} hasCart={false} />
+      <Header classname="border-gray-200" hasSearch={false} hasCart={false}/>
       {children}
     </main>
   );

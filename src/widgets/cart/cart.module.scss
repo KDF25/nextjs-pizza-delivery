@@ -1,0 +1,23 @@
+.wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 20px;
+  margin-top: 40px;
+
+  .title {
+    font-size: var(--title-xl);
+    font-weight: bold;
+  }
+
+  .content{
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    column-gap: 40px;
+
+    .left{
+      display: grid;
+      grid-auto-flow: row;
+      row-gap: 40px;
+    }
+  }
+}

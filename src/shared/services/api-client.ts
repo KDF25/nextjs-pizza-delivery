@@ -3,7 +3,7 @@ import * as ingredients from './ingredients';
 import * as sizes from './sizes';
 import * as pizzaTypes from './pizzaTypes';
 import * as cart from './cart';
-// import * as auth from './auth';
+import * as auth from './auth';
 // import * as stories from './stories';
 
 export const Api = {
@@ -12,6 +12,6 @@ export const Api = {
   sizes,
   pizzaTypes,
   cart,
-  //   auth,
+  auth,
   //   stories,
 };

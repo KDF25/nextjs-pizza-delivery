@@ -1,0 +1,23 @@
+.wrapper {
+  display: grid;
+  grid-auto-flow: row;
+  background-color: white;
+  border-radius: 20px;
+
+  .title__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 28px;
+    border-bottom: 1px solid #f3f4f6;
+
+    .title {
+      font-size: var(--title-sm);
+      font-weight: bold;
+    }
+  }
+
+  .content {
+    padding: 20px;
+  }
+}

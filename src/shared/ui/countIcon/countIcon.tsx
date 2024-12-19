@@ -29,7 +29,7 @@ export const CountIconButton: React.FC<IconButtonProps> = ({
           : 'w-[38px] h-[38px] rounded-md'
       )}
     >
-      {type === 'plus' ? (
+      {type === counterAction.plus ? (
         <Plus className={size === 'sm' ? 'h-4' : 'h-5'} />
       ) : (
         <Minus className={size === 'sm' ? 'h-4' : 'h-5'} />

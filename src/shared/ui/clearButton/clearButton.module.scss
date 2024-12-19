@@ -1,0 +1,17 @@
+.wrapper {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.3;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  .icon {
+    height: 1.25rem; // h-5
+    width: 1.25rem; // w-5
+  }
+}
