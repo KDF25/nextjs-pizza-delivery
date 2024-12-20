@@ -2,10 +2,14 @@
 
 import { counterAction } from '@entities/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { cartFormSchema, CartFormValues } from '@shared/validate';
+import { paths } from '@shared/config';
 import { useCart } from '@shared/hooks';
+import { Api } from '@shared/services';
 import { Container } from '@shared/ui';
-import { FC, useState } from 'react';
+import { cartFormSchema, CartFormValues } from '@shared/validate';
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import { FC, useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { createOrder } from '../../../app/actions';
@@ -21,7 +25,7 @@ export const Cart: FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart();
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
 
   const form = useForm<CartFormValues>({
     resolver: zodResolver(cartFormSchema),
@@ -35,20 +39,25 @@ export const Cart: FC = () => {
     },
   });
 
-  // useEffect(() => {
-  //   async function fetchUserInfo() {
-  //     const data = await Api.auth.getMe();
-  //     const [firstName, lastName] = data.fullName.split(' ');
+  useEffect(() => {
+    if (items?.length === 0) {
+      redirect(paths.home);
+    }
+  }, [items]);
 
-  //     form.setValue('firstName', firstName);
-  //     form.setValue('lastName', lastName);
-  //     form.setValue('email', data.email);
-  //   }
+  useEffect(() => {
+    async function fetchUserInfo() {
+      const data = await Api.auth.getMe();
+      const [firstName, lastName] = data.fullName.split(' ');
+      form.setValue('firstName', firstName);
+      form.setValue('lastName', lastName);
+      form.setValue('email', data.email);
+    }
 
-  //   if (session) {
-  //     fetchUserInfo();
-  //   }
-  // }, [session]);
+    if (session) {
+      fetchUserInfo();
+    }
+  }, [session]);
 
   const onSubmit = async (data: CartFormValues) => {
     try {
