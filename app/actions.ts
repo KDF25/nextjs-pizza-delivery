@@ -5,8 +5,8 @@ import { CartFormValues } from '@shared/config';
 import { prisma } from '@shared/database';
 import { getUserSession } from '@shared/lib';
 import { Api } from '@shared/services';
-import { verificationUser } from '@shared/ui';
-import { hashSync } from 'bcrypt';
+import { newOrder, verificationUser } from '@shared/ui';
+import { hashSync } from 'bcryptjs';
 import { cookies } from 'next/headers';
 
 export async function createOrder(data: CartFormValues) {
@@ -94,7 +94,17 @@ export async function createOrder(data: CartFormValues) {
 
     // const paymentUrl = paymentData.confirmation.confirmation_url;
 
-    return [order.id, "paymentUrl"];
+    const paymentUrl = 'https://your-delivery-app-link.com'
+      const form = newOrder(
+        paymentUrl,
+            order.id,
+            userCart.totalAmount
+          );
+      await Api.mail.sendMail({
+        to: data?.email,
+        ...form,
+      });
+      return paymentUrl
   } catch (err) {
     console.log('[CreateOrder] Server error', err);
   }

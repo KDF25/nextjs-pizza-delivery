@@ -4,7 +4,7 @@ import { counterAction } from '@entities/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cartFormSchema, CartFormValues } from '@shared/config';
 import { useCart } from '@shared/hooks';
-import { Container, newOrder } from '@shared/ui';
+import { Container } from '@shared/ui';
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -16,7 +16,6 @@ import {
   CartPersonalForm,
   CartSidebar,
 } from './components';
-import { Api } from '@shared/services';
 
 export const Cart: FC = () => {
   const [submitting, setSubmitting] = useState(false);
@@ -51,40 +50,16 @@ export const Cart: FC = () => {
   //   }
   // }, [session]);
 
-  // const handle = async () => {
-  //   const form = mailForm('https://your-delivery-app-link.com');
-  //   await Api.mail.sendMail({
-  //     to: 'karimov.damir.faridovich@gmail.com',
-  //     ...form,
-  //   });
-  // };
-
   const onSubmit = async (data: CartFormValues) => {
-    // const onSubmit = async () => {
     try {
       setSubmitting(true);
+      const url = await createOrder(data);
+      toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
+        icon: '✅',
+      });
 
-      const info = await createOrder(data);
-
-      if (info) {
-        const [id, url] = info;
-        toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
-          icon: '✅',
-        });
-
-        const form = newOrder(
-          'https://your-delivery-app-link.com',
-          id as number,
-          totalAmount
-        );
-        await Api.mail.sendMail({
-          to: data?.email,
-          ...form,
-        });
-
-        if (url) {
-          location.href = url as string;
-        }
+      if (url) {
+        location.href = url;
       }
     } catch (err) {
       console.log(err);
