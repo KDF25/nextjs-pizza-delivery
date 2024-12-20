@@ -1,5 +1,6 @@
 import { Header } from '@shared/layouts';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'PIZZA DELIVERY  | Корзина',
@@ -13,7 +14,9 @@ export default function CartLayout({
 }>) {
   return (
     <main className="min-h-screen bg-[#F4F1EE]">
-      <Header classname="border-gray-200" hasSearch={false} hasCart={false}/>
+      <Suspense>
+        <Header classname="border-gray-200" hasSearch={false} hasCart={false} />
+      </Suspense>
       {children}
     </main>
   );
