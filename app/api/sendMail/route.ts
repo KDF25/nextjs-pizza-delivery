@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(req: NextRequest) {
   try {
-    const { to, subject, text, html }: IMailData = await req.json();
+    const { to, subject, html }: IMailData = await req.json();
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
       port: 465,
@@ -15,10 +15,9 @@ export async function POST(req: NextRequest) {
       },
     });
     const mailOptions = {
-      from: process.env.MAIL_USER,
+      from: process.env.MAIL_NAME,
       to,
       subject,
-      text,
       html,
     };
 
