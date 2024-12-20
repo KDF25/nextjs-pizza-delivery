@@ -3,21 +3,22 @@
 import { cn } from '@/shared/lib/utils';
 import { IStory } from '@entities/stories';
 import { Api } from '@shared/services';
-import { Container } from '@shared/ui';
+import { Container, Skeleton } from '@shared/ui';
 import { X } from 'lucide-react';
-import React from 'react';
+import { FC, useEffect, useState } from 'react';
 import ReactStories from 'react-insta-stories';
+import styles from './stories.module.scss';
 
 interface Props {
   className?: string;
 }
 
-export const Stories: React.FC<Props> = ({ className }) => {
-  const [stories, setStories] = React.useState<IStory[]>([]);
-  const [open, setOpen] = React.useState(false);
-  const [selectedStory, setSelectedStory] = React.useState<IStory>();
+export const Stories: FC<Props> = ({ className }) => {
+  const [stories, setStories] = useState<IStory[]>([]);
+  const [open, setOpen] = useState(false);
+  const [selectedStory, setSelectedStory] = useState<IStory>();
 
-  React.useEffect(() => {
+  useEffect(() => {
     async function fetchStories() {
       const data = await Api.stories.getAll();
       setStories(data);
@@ -28,7 +29,6 @@ export const Stories: React.FC<Props> = ({ className }) => {
 
   const onClickStory = (story: IStory) => {
     setSelectedStory(story);
-
     if (story.items.length > 0) {
       setOpen(true);
     }
@@ -36,41 +36,30 @@ export const Stories: React.FC<Props> = ({ className }) => {
 
   return (
     <Container>
-      <div
-        className={cn(
-          'flex items-center justify-between gap-2 my-10',
-          className
-        )}
-      >
-        {stories.length === 0 &&
-          [...Array(6)].map((_, index) => (
-            <div
-              key={index}
-              className="w-[200px] h-[250px] bg-gray-200 rounded-md animate-pulse"
+      <div className={cn(styles.wrapper, className)}>
+        <div className={styles.cards}>
+          {stories.length === 0 &&
+            [...Array(6)].map((_, index) => (
+              <Skeleton key={index} className="h-[250px]" />
+            ))}
+
+          {stories.slice(0, 6).map((story) => (
+            <img
+              key={story.id}
+              onClick={() => onClickStory(story)}
+              className={styles.card}
+              height={250}
+              width={200}
+              src={story.previewImageUrl}
             />
           ))}
-
-        {stories.slice(0, 6).map((story) => (
-          <img
-            key={story.id}
-            onClick={() => onClickStory(story)}
-            className="rounded-md cursor-pointer"
-            height={250}
-            width={200}
-            src={story.previewImageUrl}
-          />
-        ))}
-
+        </div>
         {open && (
-          <div className="absolute left-0 top-0 w-full h-full bg-black/80 flex items-center justify-center z-30">
-            <div className="relative" style={{ width: 520 }}>
-              <button
-                className="absolute -right-10 -top-5 z-30"
-                onClick={() => setOpen(false)}
-              >
-                <X className="absolute top-0 right-0 w-8 h-8 text-white/50" />
+          <div className={styles.stories__wrapper}>
+            <div className={styles.stories}>
+              <button className={styles.close} onClick={() => setOpen(false)}>
+                <X className={styles.icon} />
               </button>
-
               <ReactStories
                 onAllStoriesEnd={() => setOpen(false)}
                 stories={
