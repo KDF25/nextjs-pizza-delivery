@@ -4,7 +4,7 @@ import { counterAction } from '@entities/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { cartFormSchema, CartFormValues } from '@shared/config';
 import { useCart } from '@shared/hooks';
-import { Container, mailForm } from '@shared/ui';
+import { Container, newOrder } from '@shared/ui';
 import { FC, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -72,7 +72,7 @@ export const Cart: FC = () => {
           icon: '✅',
         });
 
-        const form = mailForm(
+        const form = newOrder(
           'https://your-delivery-app-link.com',
           id as number,
           totalAmount

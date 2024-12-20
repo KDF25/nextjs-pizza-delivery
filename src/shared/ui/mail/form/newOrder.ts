@@ -1,4 +1,4 @@
-export const mailForm = (url: string, orderId: number, totalAmount: number) => {
+export const newOrder = (url: string, orderId: number, totalAmount: number) => {
   const subject = `ЗАКАЗ №${orderId}`;
   const text =
     'Вы успешно выбрали доставку еды. Для завершения оплаты перейдите по ссылке ниже.';

@@ -4,6 +4,8 @@ import { OrderStatus, Prisma } from '@prisma/client';
 import { CartFormValues } from '@shared/config';
 import { prisma } from '@shared/database';
 import { getUserSession } from '@shared/lib';
+import { Api } from '@shared/services';
+import { verificationUser } from '@shared/ui';
 import { hashSync } from 'bcrypt';
 import { cookies } from 'next/headers';
 
@@ -163,13 +165,12 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       },
     });
 
-    // await sendEmail(
-    //   createdUser.email,
-    //   'Next Pizza / 📝 Подтверждение регистрации',
-    //   VerificationUserTemplate({
-    //     code,
-    //   }),
-    // );
+    const form = verificationUser(code);
+    await Api.mail.sendMail({
+      to: body?.email,
+      ...form,
+    });
+ 
   } catch (err) {
     console.log('Error [CREATE_USER]', err);
     throw err;

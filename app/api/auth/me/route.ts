@@ -1,28 +1,30 @@
-// import { authOptions } from '@shared/config';
+import { authOptions } from '@shared/config';
 import { prisma } from '@shared/database';
-// import { getServerSession } from 'next-auth/next';
+import { getServerSession } from 'next-auth/next';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
-// export async function GET(req: any, res: any) {
   try {
-    // const user = await getServerSession(req, res, authOptions);
+    const session = await getServerSession(authOptions);
 
-    // if (!user) {
-    //   return NextResponse.json({ message: 'Вы не авторизованы' }, { status: 401 });
-    // }
+    if (!session || !session.user) {
+      return NextResponse.json({ message: 'Вы не авторизованы' }, { status: 401 });
+    }
+
+    const userId = Number(session.user.id);
+    if (isNaN(userId)) {
+      return NextResponse.json({ message: 'Неверный идентификатор пользователя' }, { status: 400 });
+    }
 
     const data = await prisma.user.findUnique({
       where: {
-        // id: Number(user.user.id),
-        id: 1,
+        id: userId,
       },
       select: {
         fullName: true,
         email: true,
-        password: false,
       },
     });
 

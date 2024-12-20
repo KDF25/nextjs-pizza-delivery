@@ -3,7 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(req: NextRequest) {
   try {
-    const code = '';
+    // const code = '';
+    const code = req.nextUrl.searchParams.get('code');
     if (!code) {
       return NextResponse.json({ error: 'Неверный код' }, { status: 400 });
     }
