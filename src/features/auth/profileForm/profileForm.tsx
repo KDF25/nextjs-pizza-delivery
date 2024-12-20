@@ -3,13 +3,14 @@
 import { FormInput } from '@features/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { User } from '@prisma/client';
-import { formRegisterSchema, paths, TFormRegisterValues } from '@shared/config';
+import { formRegisterSchema, TFormRegisterValues } from '@shared/validate';
 import { Button, Container } from '@shared/ui';
 import { signOut } from 'next-auth/react';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { updateUserInfo } from '../../../../app/actions';
+import { paths } from '@shared/config';
 
 interface Props {
   data: User;

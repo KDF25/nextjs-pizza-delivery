@@ -1,4 +1,4 @@
-import { findPizzas, GetSearchParams } from '@shared/lib';
+import { findPizzas, GetSearchParams } from '@entities/home';
 import { Container } from '@shared/ui';
 import { FC, Suspense } from 'react';
 import {

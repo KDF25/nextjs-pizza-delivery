@@ -1,7 +1,7 @@
 import { ProfileForm } from '@features/auth';
 import { paths } from '@shared/config';
 import { prisma } from '@shared/database';
-import { getUserSession } from '@shared/lib';
+import { getUserSession } from '@entities/auth';
 import { redirect } from 'next/navigation';
 import { FC } from 'react';
 

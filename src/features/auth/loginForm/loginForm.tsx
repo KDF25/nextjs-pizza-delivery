@@ -2,7 +2,7 @@
 
 import { FormInput } from '@features/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { formLoginSchema, TFormLoginValues } from '@shared/config';
+import { formLoginSchema, TFormLoginValues } from '@shared/validate';
 import { Button } from '@shared/ui';
 import { signIn } from 'next-auth/react';
 import React from 'react';

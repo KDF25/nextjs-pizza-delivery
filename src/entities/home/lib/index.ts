@@ -1,3 +1,4 @@
+export * from './findPizza';
 export * from './getPizzaDetails';
 export * from './getPizzaSizes';
 export * from './totalPizzaPrice';

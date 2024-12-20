@@ -1,4 +1,4 @@
-import { GetSearchParams } from '@shared/lib';
+import { GetSearchParams } from '@entities/home';
 import { Home } from '@widgets/home';
 import { FC } from 'react';
 

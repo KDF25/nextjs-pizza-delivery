@@ -1,9 +1,9 @@
 'use server';
 
 import { OrderStatus, Prisma } from '@prisma/client';
-import { CartFormValues } from '@shared/config';
+import { CartFormValues } from '@shared/validate';
 import { prisma } from '@shared/database';
-import { getUserSession } from '@shared/lib';
+import { getUserSession } from '@entities/auth';
 import { Api } from '@shared/services';
 import { newOrder, verificationUser } from '@shared/ui';
 import { hashSync } from 'bcryptjs';

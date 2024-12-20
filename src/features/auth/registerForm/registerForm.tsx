@@ -2,7 +2,7 @@
 
 import { FormInput } from '@features/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { formRegisterSchema, TFormRegisterValues } from '@shared/config';
+import { formRegisterSchema, TFormRegisterValues } from '@shared/validate';
 import { Button } from '@shared/ui';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
