@@ -26,8 +26,10 @@ export const IngredientItem: React.FC<Props> = ({
     >
       {active && <CircleCheck className={styles.icon} />}
       <img width={110} height={110} src={imageUrl} alt={name} />
-      <span className={styles.name}>{name}</span>
-      <span className={styles.price}>{price} ₽</span>
+      <div className={styles.text}>
+        <span className={styles.name}>{name}</span>
+        <span className={styles.price}>{price} ₽</span>
+      </div>
     </div>
   );
 };
