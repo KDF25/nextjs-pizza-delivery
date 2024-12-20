@@ -1,7 +1,12 @@
 import { findPizzas, GetSearchParams } from '@shared/lib';
 import { Container } from '@shared/ui';
 import { FC, Suspense } from 'react';
-import { ParametersFilter, ProductCardList, TopBar } from './components';
+import {
+  ParametersFilter,
+  ProductCardList,
+  Stories,
+  TopBar,
+} from './components';
 import styles from './home.module.scss';
 
 interface HomeProps {
@@ -16,6 +21,8 @@ export const Home: FC<HomeProps> = async ({ searchParams }) => {
         <h1 className={styles.title}>Все пиццы</h1>
       </Container>
       <TopBar />
+
+      <Stories />
 
       <Container className={styles.content__wrapper}>
         <div className={styles.content}>

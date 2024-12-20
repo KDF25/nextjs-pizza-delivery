@@ -5,7 +5,7 @@ import * as pizzaTypes from './pizzaTypes';
 import * as cart from './cart';
 import * as auth from './auth';
 import * as mail from './mail';
-// import * as stories from './stories';
+import * as stories from './stories';
 
 export const Api = {
   products,
@@ -15,5 +15,5 @@ export const Api = {
   cart,
   auth,
   mail,
-  //   stories,
+  stories,
 };
