@@ -2,7 +2,12 @@
 
 import { cn } from '@/shared/lib/utils';
 import { ProductWithRelations } from '@entities/productForm';
-import { Dialog, DialogContent, DialogTitle } from '@shared/ui';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from '@shared/ui';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
 import styles from './chooseProdectModal.module.scss';
@@ -20,6 +25,7 @@ export const ChooseProductModal: FC<Props> = ({ product, className }) => {
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
       <DialogTitle style={{ display: 'none' }} />
       <DialogContent className={cn(styles.content, className)}>
+        <DialogDescription style={{ display: 'none' }} />
         <ProductForm product={product} onSubmit={() => router.back()} />
       </DialogContent>
     </Dialog>

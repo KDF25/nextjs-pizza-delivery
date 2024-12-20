@@ -35,7 +35,11 @@ export const ChooseProductForm: React.FC<Props> = ({
 
       <div className={styles.details}>
         <p className={styles.title}>{name}</p>
-        <Button loading={loading} onClick={onSubmit} className={styles.button}>
+        <Button
+          loading={loading}
+          onClick={() => onSubmit?.()}
+          className={styles.button}
+        >
           Добавить в корзину за {price} ₽
         </Button>
       </div>

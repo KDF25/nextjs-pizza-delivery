@@ -1,9 +1,8 @@
 .wrapper {
-  display: flex;
-  flex: 1;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
 
   .details {
-    width: 490px;
     background-color: #f7f6f5;
     padding: 28px;
     display: grid;
@@ -12,7 +11,6 @@
 
     .title {
       font-weight: 800;
-      margin-bottom: 4px;
     }
 
     .text {

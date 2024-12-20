@@ -25,15 +25,15 @@
     color: hsl(var(--primary));
   }
 
-  .text{
+  .text {
     display: grid;
     grid-auto-flow: row;
     row-gap: 5px;
-    
+
     .name {
       font-size: 12px;
     }
-    
+
     .price {
       font-weight: bold;
     }
