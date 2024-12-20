@@ -1,8 +1,10 @@
 'use client';
 
-import { ClearButton, Textarea } from '@shared/ui';
+import { cn } from '@shared/lib';
+import { ClearButton, ErrorText, RequiredSymbol, Textarea } from '@shared/ui';
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
+import styles from './formTextarea.module.scss';
 
 interface Props extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
@@ -33,18 +35,17 @@ export const FormTextarea: React.FC<Props> = ({
   };
 
   return (
-    <div className={className}>
-      <p className="font-medium mb-2">
-        {label} {required && <span className="text-red-500">*</span>}
+    <div className={cn(className, styles.wrapper)}>
+      <p className={styles.title}>
+        {label} {required && <RequiredSymbol />}
       </p>
 
-      <div className="relative">
+      <div className={styles.input_wrapper}>
         <Textarea className="h-12 text-md" {...register(name)} {...props} />
-
         {value && <ClearButton onClick={onClickClear} />}
       </div>
 
-      {errorText && <p className="text-red-500 text-sm mt-2">{errorText}</p>}
+      {errorText && <ErrorText text={errorText} className={styles.error} />}
     </div>
   );
 };

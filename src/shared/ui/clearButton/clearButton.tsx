@@ -9,7 +9,7 @@ interface Props {
 
 export const ClearButton: FC<Props> = ({ onClick, className }) => {
   return (
-    <button onClick={onClick} className={`${styles.clearButton} ${className}`}>
+    <button onClick={onClick} className={`${styles.wrapper} ${className}`}>
       <X className={styles.icon} />
     </button>
   );
