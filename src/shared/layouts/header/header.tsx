@@ -56,7 +56,7 @@ export const Header: FC<HeaderProps> = ({
         <Link href={'/'} className={styles.left}>
           <Image src="/logo.png" alt="Logo" width={35} height={35} />
           <div className={styles.text}>
-            <h1 className={styles.title}>Next Pizza</h1>
+            <h1 className={styles.title}>PizzaRush</h1>
             <p className={styles.subtitle}>вкусней уже некуда</p>
           </div>
         </Link>

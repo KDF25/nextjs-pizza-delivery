@@ -1,6 +1,7 @@
 import { Providers } from '@app/providers';
 import '@shared/styles/globals.scss';
 import { Nunito } from 'next/font/google';
+import Head from 'next/head';
 
 const nunito = Nunito({
   subsets: ['cyrillic'],
@@ -14,7 +15,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html prefix="og: http://ogp.me/ns#">
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body className={`${nunito.variable}`}>
         <Providers>{children}</Providers>
       </body>
