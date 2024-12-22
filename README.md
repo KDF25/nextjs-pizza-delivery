@@ -1,36 +1,149 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PizzaRush
 
-## Getting Started
+**PizzaRush** - 🍕 Быстрая и вкусная доставка пиццы прямо к вашему порогу. Этот проект создан на основе Next.js с использованием TypeScript.
 
-First, run the development server:
+## Особенности проекта
+- **Next.js**: ⚡ Фреймворк для разработки серверных и клиентских веб-приложений.
+- **TypeScript**: 🛡️ Надежная типизация для предотвращения ошибок.
+- **Open Graph**: 🌐 Настроенные метаданные для улучшения SEO.
+- **Prisma**: 🗂️ ORM для удобной работы с базой данных.
+- **Tailwind CSS**: 🎨 Утилитарный CSS-фреймворк для быстрой стилизации.
+- **React Hook Form**: 📋 Простая и гибкая библиотека для работы с формами.
+- **Zod**: ✅ Библиотека для проверки и типизации данных.
+- **Shadcn**: 🖌️ Модульный дизайн-компонент для создания доступных интерфейсов.
+- **React Hot Toast**: 🔔 Для отображения уведомлений.
+- **Nodemailer**: ✉️ Для отправки email-сообщений.
+- **Axios**: 🌍 HTTP-клиент для работы с API.
+- **Zustand**: 🔧 Легковесная библиотека управления состоянием.
 
+## Авторизация и регистрация
+- **Авторизация через Google и GitHub**: 🔑 Поддержка OAuth для упрощения входа пользователей через их аккаунты Google и GitHub.
+- **Регистрация с подтверждением по электронной почте**: 📧 После регистрации пользователи получают письмо с подтверждением для активации своего аккаунта.
+
+## Хостинг базы данных
+- **Neon**: 🚀 Современный облачный хостинг PostgreSQL. Управление базой данных осуществляется через [Neon Console](https://console.neon.tech/app/projects), что позволяет масштабировать и управлять данными с высокой производительностью.
+
+## Установка
+
+1. Склонируйте репозиторий:
+   ```bash
+   git clone https://github.com/KDF25/nextjs-pizza-delivery.git
+   ```
+
+2. Перейдите в папку проекта:
+   ```bash
+   cd nextjs-pizza-delivery
+   ```
+
+3. Установите зависимости:
+   ```bash
+   npm install
+   ```
+
+4. Создайте файл `.env` и добавьте переменные окружения:
+   ```env
+    POSTGRES_URL= 
+    POSTGRES_URL_NON_POOLING= 
+
+    NEXT_PUBLIC_API_URL= 
+    NEXT_BASE_URL =  
+
+    MAIL_NAME =  
+    MAIL_HOST = 
+    MAIL_USER = 
+    MAIL_PASS = 
+
+    NEXTAUTH_SECRET =  
+
+    GOOGLE_CLIENT_ID = 
+    GOOGLE_CLIENT_SECRET =  
+    GITHUB_ID = 
+    GITHUB_SECRET =  
+   ```
+
+## Запуск проекта
+
+### Локальная разработка
+
+Для запуска в режиме разработки выполните:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Приложение будет доступно по адресу: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Сборка и продакшен
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Для сборки проекта:
+```bash
+npm run build
+```
 
-## Learn More
+Для запуска в продакшен режиме:
+```bash
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Структура проекта (по FSD)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/entities` - 🏗️ Описание бизнес-сущностей приложения.
+- `src/features` - ⚡ Модули с функциональностью, изолированной по бизнес-логике.
+- `src/shared` - 🛠️ Общие модули, используемые в разных частях приложения.
+- `src/widgets` - 💡 Модули, объединяющие несколько компонентов для создания законченной функциональности.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Скрипты
 
-## Deploy on Vercel
+- `npm run dev` - 🚀 Запуск в режиме разработки.
+- `npm run build` - 🏗️ Сборка приложения.
+- `npm run start` - 🌐 Запуск собранного приложения.
+- `npm run lint` - 🔍 Линтинг кода.
+- `npm run format` - 🧹 Форматирование кода с помощью Prettier.
+- `npm run prisma:generate` - 🔄 Генерация Prisma-клиента.
+- `npm run prisma:push` - 📥 Применение изменений в базу данных.
+- `npm run prisma:migrate` - 📜 Создание миграций.
+- `npm run prisma:studio` - 🖥️ Запуск интерфейса Prisma Studio.
+- `npm run prisma:seed` - 🌱 Выполнение файла для начального заполнения базы данных.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Используемые библиотеки
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Основные библиотеки
+- **Next.js**: ⚡ Фреймворк для серверных и клиентских приложений.
+- **React**: ⚛️ Основной инструмент для разработки пользовательских интерфейсов.
+- **TypeScript**: 🛡️ Добавляет строгую типизацию к JavaScript.
+
+### Для работы с базой данных
+- **Prisma**: 🗂️ ORM для удобной работы с SQL-базами данных.
+
+### UI и стилизация
+- **Tailwind CSS**: 🎨 Утилитарный CSS-фреймворк для быстрого стилизования.
+- **Shadcn**: 🖌️ Модульный дизайн-компонент для создания доступных интерфейсов.
+- **React Hot Toast**: 🔔 Библиотека для всплывающих уведомлений.
+
+### Формы и проверка данных
+- **React Hook Form**: 📋 Библиотека для работы с формами.
+- **Zod**: ✅ Для проверки и типизации данных.
+
+### Управление состоянием
+- **Zustand**: 🔧 Простая и мощная библиотека для управления состоянием приложения.
+
+### HTTP-запросы и интеграция
+- **Axios**: 🌍 HTTP-клиент для работы с API.
+- **Nodemailer**: ✉️ Для отправки email-сообщений.
+
+### Прочие библиотеки
+- **Lucide React**: 🎨 Иконки для React.
+- **Clsx**: 🔤 Удобная работа с классами CSS.
+- **Sass**: 💅 Препроцессор для CSS.
+
+## Развертывание
+
+Для развертывания можно использовать любую платформу, поддерживающую Next.js (например, Vercel):
+
+1. Перейдите на [Vercel](https://vercel.com) и создайте новый проект.
+2. Подключите репозиторий.
+3. Настройте переменные окружения.
+4. Нажмите **Deploy**.
+
+---
+
+**PizzaRush** © 2024. Все права защищены.
