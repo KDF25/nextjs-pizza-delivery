@@ -18,6 +18,11 @@
       display: grid;
       grid-auto-flow: row;
       row-gap: 40px;
+
+      .loading {
+        opacity: 0.4;
+        pointer-events: none;
+      }
     }
   }
 }

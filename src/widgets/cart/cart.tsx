@@ -103,13 +103,9 @@ export const Cart: FC = () => {
                 loading={loading}
               />
 
-              <CartPersonalForm
-                className={loading ? 'opacity-40 pointer-events-none' : ''}
-              />
+              <CartPersonalForm className={loading ? styles.loading : ''} />
 
-              <CartAddressForm
-                className={loading ? 'opacity-40 pointer-events-none' : ''}
-              />
+              <CartAddressForm className={loading ? styles.loading : ''} />
             </div>
             <div>
               <CartSidebar

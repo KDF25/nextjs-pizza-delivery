@@ -2,12 +2,13 @@
 
 import { FormInput } from '@features/cart';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { formLoginSchema, TFormLoginValues } from '@shared/validate';
 import { Button } from '@shared/ui';
+import { formLoginSchema, TFormLoginValues } from '@shared/validate';
 import { signIn } from 'next-auth/react';
 import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import styles from './loginForm.module.scss';
 
 interface Props {
   onClose?: VoidFunction;
@@ -48,14 +49,10 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
 
   return (
     <FormProvider {...form}>
-      <form
-        className="flex flex-col gap-5"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
-        <div className="flex justify-between items-center">
-          <div className="mr-2">
-            {/* <Title text="Вход в аккаунт" size="md" className="font-bold" /> */}
-            <p>Вход в аккаунт</p>
+      <form className={styles.wrapper} onSubmit={form.handleSubmit(onSubmit)}>
+        <div className={styles.top}>
+          <div className={styles.title__wrapper}>
+            <p className={styles.title}>Вход в аккаунт</p>
             <p className="text-gray-400">
               Введите свою почту, чтобы войти в свой аккаунт
             </p>

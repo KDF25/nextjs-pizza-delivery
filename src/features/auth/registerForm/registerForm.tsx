@@ -8,6 +8,7 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { registerUser } from '../../../../app/actions';
+import styles from './registerForm.module.scss';
 
 interface Props {
   onClose?: VoidFunction;
@@ -48,10 +49,21 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
 
   return (
     <FormProvider {...form}>
-      <form
-        className="flex flex-col gap-5"
-        onSubmit={form.handleSubmit(onSubmit)}
-      >
+      <form className={styles.wrapper} onSubmit={form.handleSubmit(onSubmit)}>
+        <div className={styles.top}>
+          <div className={styles.title__wrapper}>
+            <p className={styles.title}>Регистрация</p>
+            <p className="text-gray-400">
+              Введите почту и придумайте пароль для регистрации
+            </p>
+          </div>
+          <img
+            src="/assets/images/phone-icon.png"
+            alt="phone-icon"
+            width={60}
+            height={60}
+          />
+        </div>
         <FormInput name="email" label="E-Mail" required />
         <FormInput name="fullName" label="Полное имя" required />
         <FormInput name="password" label="Пароль" type="password" required />

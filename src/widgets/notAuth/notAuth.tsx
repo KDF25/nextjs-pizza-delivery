@@ -1,9 +1,10 @@
 import { InfoBlock } from '@entities/auth';
 import { FC } from 'react';
+import styles from './notAuth.module.scss';
 
 export const NotAuth: FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center mt-40">
+    <div className={styles.wrapper}>
       <InfoBlock
         title="Доступ запрещён"
         text="Данную страницу могут просматривать только авторизованные пользователи"

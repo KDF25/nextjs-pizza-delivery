@@ -11,6 +11,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { updateUserInfo } from '../../../../app/actions';
 import { paths } from '@shared/config';
+import styles from './profileForm.module.scss';
 
 interface Props {
   data: User;
@@ -53,14 +54,10 @@ export const ProfileForm: React.FC<Props> = ({ data }) => {
   };
 
   return (
-    <Container className="my-10">
-      <p>Личные данные | #{data.id}</p>
-
+    <Container className={styles.wrapper}>
+      <p className={styles.title}>Личные данные | #{data.id}</p>
       <FormProvider {...form}>
-        <form
-          className="flex flex-col gap-5 w-96 mt-10"
-          onSubmit={form.handleSubmit(onSubmit)}
-        >
+        <form className={styles.wrapper} onSubmit={form.handleSubmit(onSubmit)}>
           <FormInput name="email" label="E-Mail" required />
           <FormInput name="fullName" label="Полное имя" required />
 
