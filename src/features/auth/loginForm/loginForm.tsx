@@ -53,7 +53,7 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
         <div className={styles.top}>
           <div className={styles.title__wrapper}>
             <p className={styles.title}>Вход в аккаунт</p>
-            <p className="text-gray-400">
+            <p className="text-gray-400 md:text-xs">
               Введите свою почту, чтобы войти в свой аккаунт
             </p>
           </div>

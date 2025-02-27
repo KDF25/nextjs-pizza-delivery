@@ -8,6 +8,7 @@ import {
   TopBar,
 } from './components';
 import styles from './home.module.scss';
+import { CartButton } from '@shared/layouts/header/components';
 
 interface HomeProps {
   searchParams: GetSearchParams;
@@ -26,7 +27,7 @@ export const Home: FC<HomeProps> = async ({ searchParams }) => {
 
       <Container className={styles.content__wrapper}>
         <div className={styles.content}>
-          <div>
+          <div className={styles.filter}>
             <Suspense>
               <ParametersFilter />
             </Suspense>
@@ -48,6 +49,9 @@ export const Home: FC<HomeProps> = async ({ searchParams }) => {
           </div>
         </div>
       </Container>
+      <div className={styles.cart}>
+        <CartButton isFull={false} />
+      </div>
     </>
   );
 };

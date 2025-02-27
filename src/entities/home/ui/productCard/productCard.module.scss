@@ -1,3 +1,5 @@
+@import '/src/shared/styles/displays.scss';
+
 .wrapper {
   height: 100%;
 
@@ -12,29 +14,56 @@
       justify-content: center;
       padding: 25px;
       border-radius: 15px;
-      height: 260px;
+      max-height: 260px;
       background: hsl(var(--secondary));
 
       img {
-        width: 215px;
-        height: 215px;
+        // max-width: 215px;
+        // max-height: 215px;
       }
     }
 
     .title {
       font-weight: bold;
       font-size: var(--title-md);
+
+      @media (max-width: $display-lg) {
+        font-size: var(--title-sm);
+      }
+
+      @media (max-width: $display-sm) {
+        font-size: var(--title-xs);
+      }
     }
 
     .text {
-      font-size: var(--title-sm);
+      font-size: var(--text-md);
+
+      @media (max-width: $display-sm) {
+        font-size: var(--text-sm);
+      }
     }
 
     .bottom {
-      display: grid;
-      grid-auto-flow: column;
-      justify-content: space-between;
-      align-items: center;
+      &__desktop {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: space-between;
+        align-items: center;
+
+        @media (max-width: $display-sm) {
+          display: none;
+        }
+      }
+
+      &__mobile {
+        display: none;
+
+        @media (max-width: $display-sm) {
+          display: grid;
+          justify-content: flex-end;
+        }
+      }
 
       .text {
         font-size: 20px;

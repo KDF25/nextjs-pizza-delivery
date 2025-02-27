@@ -1,3 +1,5 @@
+@import '/src/shared/styles/displays.scss';
+
 .container {
   margin-top: 40px;
   display: grid;
@@ -17,11 +19,35 @@
     display: grid;
     grid-template-columns: 1fr 4fr;
     column-gap: 60px;
+    position: relative;
+
+    @media (max-width: $display-md) {
+      grid-template-columns: none;
+    }
+
+    .filter {
+      display: block;
+      @media (max-width: $display-md) {
+        display: none;
+      }
+    }
 
     .products__wrapper {
       display: grid;
       grid-auto-flow: row;
       row-gap: 20px;
     }
+  }
+}
+
+.cart {
+  display: none;
+
+  @media (max-width: $display-md) {
+    display: grid;
+    justify-content: flex-end;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
   }
 }

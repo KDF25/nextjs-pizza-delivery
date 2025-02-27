@@ -20,15 +20,23 @@ export const ProductCard: FC<ProductCardProps> = ({ item, className }) => {
           <Image src={item?.imageUrl} alt="product" width={215} height={215} />
         </div>
         <p className={styles.title}>{item?.name}</p>
-        {/* <span className={styles.text}>{item?.ingridients}</span> */}
-        <div className={styles.bottom}>
+        <span className={styles.text}>
+          {item?.ingredients.map((el) => el?.name).join(', ')}
+        </span>
+        <div className={styles.bottom__desktop}>
           <span className={styles.text}>
             от <b>{item?.items[0].price} ₽</b>
           </span>
-
           <Button variant="secondary" className={styles.button}>
             <Plus size={20} />
             <span>Добавить</span>
+          </Button>
+        </div>
+        <div className={styles.bottom__mobile}>
+          <Button variant="secondary" className={styles.button}>
+            <span>
+              от <b>{item?.items[0].price} ₽</b>
+            </span>
           </Button>
         </div>
       </Link>

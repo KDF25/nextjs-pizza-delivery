@@ -1,4 +1,26 @@
+@import '/src/shared/styles/displays.scss';
+
 .wrapper {
   margin: 0 auto;
   max-width: var(--constainer_xl);
+
+  @media (max-width: $display-xl) {
+    padding: 0 var(--container-padding-xl-side);
+  }
+
+  @media (max-width: $display-lg) {
+    padding: 0 var(--container-padding-lg-side);
+  }
+
+  @media (max-width: $display-md) {
+    padding: 0 var(--container-padding-md-side);
+  }
+
+  @media (max-width: $display-sm) {
+    padding: 0 var(--container-padding-sm-side);
+  }
+
+  @media (max-width: $display-xs) {
+    padding: 0 var(--container-padding-xs-side);
+  }
 }

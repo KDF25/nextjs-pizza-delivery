@@ -53,7 +53,7 @@ export const RegisterForm: React.FC<Props> = ({ onClose }) => {
         <div className={styles.top}>
           <div className={styles.title__wrapper}>
             <p className={styles.title}>Регистрация</p>
-            <p className="text-gray-400">
+            <p className="text-gray-400 md:text-xs">
               Введите почту и придумайте пароль для регистрации
             </p>
           </div>

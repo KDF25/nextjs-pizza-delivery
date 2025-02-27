@@ -31,7 +31,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="w-[450px] bg-white p-10">
+      <DialogContent className="w-[90vw] max-w-[450px] bg-white p-10 max-md:p-5 max-sm:rounded-sm">
         <DialogTitle style={{ display: 'none' }} />
         <DialogDescription style={{ display: 'none' }} />
         {type === userType.login ? (

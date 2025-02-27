@@ -70,7 +70,7 @@ export const Header: FC<HeaderProps> = ({
           />
 
           <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
-          {hasCart && <CartButton />}
+          {hasCart && <CartButton className={styles.cart} />}
         </div>
       </Container>
     </header>

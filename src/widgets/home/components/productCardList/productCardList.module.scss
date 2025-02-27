@@ -1,3 +1,5 @@
+@import '/src/shared/styles/displays.scss';
+
 .wrapper {
   display: grid;
   grid-auto-flow: row;
@@ -6,11 +8,40 @@
   .title {
     font-weight: bold;
     font-size: var(--title-xl);
+
+    @media (max-width: $display-lg) {
+      font-size: var(--title-lg);
+    }
+
+    @media (max-width: $display-md) {
+      font-size: var(--title-md);
+    }
+
+    @media (max-width: $display-sm) {
+      font-size: var(--title-sm);
+    }
+
+    @media (max-width: $display-xs) {
+      font-size: var(--title-xs);
+    }
   }
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 50px;
+
+    @media (max-width: $display-lg) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+
+    @media (max-width: $display-md) {
+      gap: 20px;
+    }
+
+    @media (max-width: $display-sm) {
+      gap: 15px;
+    }
   }
 }

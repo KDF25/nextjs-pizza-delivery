@@ -1,5 +1,42 @@
 .wrapper {
-  .button {
+  .button__mobile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+
+    .cart__info {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.3s;
+
+      .cart__icon {
+        position: relative;
+      }
+
+      b {
+        font-weight: bold;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 20px;
+        height: 20px;
+        background-color: orange;
+        color: white;
+        font-size: 8px;
+        border-radius: 50%;
+      }
+
+      &:hover {
+        opacity: 0;
+      }
+    }
+  }
+
+  .button__desktop {
     position: relative;
     display: flex;
     align-items: center;

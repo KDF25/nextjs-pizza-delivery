@@ -1,3 +1,5 @@
+@import '/src/shared/styles/displays.scss';
+
 .wrapper {
   .container {
     display: grid;
@@ -5,9 +7,18 @@
     column-gap: 10px;
     align-items: center;
     justify-content: space-between;
-    padding: 32px 0;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @media (max-width: $display-md) {
+      grid-template-columns: repeat(2, max-content);
+    }
 
     .search {
+      display: block;
+      @media (max-width: $display-md) {
+        display: none;
+      }
     }
 
     .left {
@@ -40,58 +51,66 @@
       align-items: center;
       column-gap: 12px;
 
-      .user {
-        display: grid;
-        grid-auto-flow: column;
-        align-items: center;
-        column-gap: 4px;
-      }
+      // @media (max-width: $display-md) {
+      //   display: none;
+      // }
+
+      // .user {
+      //   display: grid;
+      //   grid-auto-flow: column;
+      //   align-items: center;
+      //   column-gap: 4px;
+      // }
 
       .cart {
-        display: grid;
-        grid-auto-flow: column;
-        column-gap: 4px;
-        position: relative;
+        display: block;
 
-        .border {
-          height: 100%;
-          width: 1px;
-          margin: 0 12px;
-          background-color: rgba(255, 255, 255, 0.3);
+        @media (max-width: $display-md) {
+          display: none;
         }
+        // grid-auto-flow: column;
+        // column-gap: 4px;
+        // position: relative;
 
-        .items {
-          display: grid;
-          grid-auto-flow: column;
-          align-items: center;
-          align-items: center;
-          gap: 8px;
-          opacity: 1;
-          transition: opacity 0.3s ease;
+        // .border {
+        //   height: 100%;
+        //   width: 1px;
+        //   margin: 0 12px;
+        //   background-color: rgba(255, 255, 255, 0.3);
+        // }
 
-          .icon {
-            position: relative;
-          }
-        }
+        // .items {
+        //   display: grid;
+        //   grid-auto-flow: column;
+        //   align-items: center;
+        //   align-items: center;
+        //   gap: 8px;
+        //   opacity: 1;
+        //   transition: opacity 0.3s ease;
 
-        .arrow {
-          position: absolute;
-          right: 20px;
-          opacity: 0;
-          transition: transform 0.3s ease;
-          transform: translateX(-8px);
-        }
+        //   .icon {
+        //     position: relative;
+        //   }
+        // }
 
-        &:hover {
-          .items {
-            opacity: 0;
-          }
+        // .arrow {
+        //   position: absolute;
+        //   right: 20px;
+        //   opacity: 0;
+        //   transition: transform 0.3s ease;
+        //   transform: translateX(-8px);
+        // }
 
-          .arrow {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
+        // &:hover {
+        //   .items {
+        //     opacity: 0;
+        //   }
+
+        //   .arrow {
+        //     opacity: 1;
+        //     transform: translateX(0);
+        //   }
+        // }
       }
     }
   }
