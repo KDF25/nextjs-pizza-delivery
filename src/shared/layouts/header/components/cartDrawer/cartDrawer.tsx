@@ -41,8 +41,8 @@ export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
       <SheetTrigger asChild>{children}</SheetTrigger>
 
       <SheetContent className={styles.wrapper}>
-        <SheetTitle className={styles.hidden} />
-        <SheetDescription className={styles.hidden} />
+        <SheetTitle className="sr-only" />
+        <SheetDescription className="sr-only" />
         <div
           className={cn(styles.contentWrapper, !totalAmount && styles.empty)}
         >

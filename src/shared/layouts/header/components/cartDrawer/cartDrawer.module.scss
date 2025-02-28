@@ -1,3 +1,5 @@
+@import '/src/shared/styles/displays.scss';
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -5,8 +7,8 @@
   background-color: #f4f1ee;
   padding-bottom: 0;
 
-  .hidden {
-    display: none;
+  @media (max-width: $display-sm) {
+    width: 100vw;
   }
 
   .contentWrapper {

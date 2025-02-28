@@ -5,9 +5,25 @@
   display: grid;
   grid-auto-flow: row;
 
+  @media (max-width: $display-md) {
+    margin-top: 30px;
+  }
+
+  @media (max-width: $display-sm) {
+    margin-top: 20px;
+  }
+
   .title {
     font-size: var(--title-lg);
     font-weight: 700;
+
+    @media (max-width: $display-md) {
+      font-size: var(--title-md);
+    }
+
+    @media (max-width: $display-sm) {
+      font-size: var(--title-sm);
+    }
   }
 }
 

@@ -21,9 +21,9 @@
       font-size: var(--title-sm);
     }
 
-    @media (max-width: $display-xs) {
-      font-size: var(--title-xs);
-    }
+    // @media (max-width: $display-xs) {
+    //   font-size: var(--title-xs);
+    // }
   }
 
   .cards {

@@ -1,15 +1,26 @@
+@import '/src/shared/styles/displays.scss';
+
 .topbar {
   position: sticky;
   top: 0;
   background-color: white;
-  padding: 20px;
+  padding: 20px 0;
   z-index: 10;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+  overflow: scroll;
 
   .container {
     display: grid;
     grid-auto-flow: column;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
+
+    .filter {
+      display: none;
+      @media (max-width: $display-md) {
+        display: block;
+      }
+    }
   }
 }
