@@ -9,6 +9,10 @@
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
   overflow: scroll;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   .container {
     display: grid;
     grid-auto-flow: column;
