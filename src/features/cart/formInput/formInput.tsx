@@ -41,7 +41,7 @@ export const FormInput: React.FC<Props> = ({
         </p>
       )}
       <div className={styles.input_wrapper}>
-        <Input className="h-12 text-md" {...register(name)} {...props} />
+        <Input className="h-12 text-md pr-10" {...register(name)} {...props} />
         {value && <ClearButton onClick={onClickClear} />}
       </div>
       {errorText && <ErrorText text={errorText} className={styles.error} />}
