@@ -1,8 +1,15 @@
+@import '/src/shared/styles/displays.scss';
+
 .content {
   padding: 0;
-  width: 1060px;
+  width: 90vw;
   max-width: 1060px;
   min-height: 500px;
   background-color: #ffffff;
   overflow: hidden;
+
+  @media (max-width: $display-md) {
+    width: 100%;
+    height: 100%;
+  }
 }

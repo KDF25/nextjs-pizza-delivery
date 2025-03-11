@@ -1,3 +1,5 @@
+@import '/src/shared/styles/displays.scss';
+
 .wrapper {
   display: flex;
   align-items: center;
@@ -16,16 +18,46 @@
     &.size20 {
       width: 300px;
       height: 300px;
+
+      @media (max-width: $display-lg) {
+        width: 265px;
+        height: 265px;
+      }
+
+      @media (max-width: $display-sm) {
+        width: 230px;
+        height: 230px;
+      }
     }
 
     &.size30 {
       width: 400px;
       height: 400px;
+
+      @media (max-width: $display-lg) {
+        width: 345px;
+        height: 345px;
+      }
+
+      @media (max-width: $display-sm) {
+        width: 290px;
+        height: 290px;
+      }
     }
 
     &.size40 {
       width: 500px;
       height: 500px;
+
+      @media (max-width: $display-lg) {
+        width: 425px;
+        height: 425px;
+      }
+
+      @media (max-width: $display-sm) {
+        width: 350px;
+        height: 350px;
+      }
     }
   }
 
@@ -38,6 +70,16 @@
     border-radius: 50%;
     width: 450px;
     height: 450px;
+
+    @media (max-width: $display-lg) {
+      width: 385px;
+      height: 385px;
+    }
+
+    @media (max-width: $display-sm) {
+      width: 320px;
+      height: 320px;
+    }
   }
 
   .innerCircle {
@@ -49,5 +91,15 @@
     border-radius: 50%;
     width: 370px;
     height: 370px;
+
+    @media (max-width: $display-lg) {
+      width: 320px;
+      height: 320px;
+    }
+
+    @media (max-width: $display-sm) {
+      width: 270px;
+      height: 270px;
+    }
   }
 }
