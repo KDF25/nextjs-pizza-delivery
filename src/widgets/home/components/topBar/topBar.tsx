@@ -7,7 +7,7 @@ import { Filter } from './filter';
 
 export const TopBar: FC = () => {
   return (
-    <div className={styles.topbar}>
+    <div className={styles.topBar}>
       <Container className={styles.container}>
         <Filter className={styles.filter} />
         <Categories />

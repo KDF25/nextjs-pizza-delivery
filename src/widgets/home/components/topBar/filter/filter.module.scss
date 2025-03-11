@@ -6,7 +6,10 @@
 
 .content {
   background: white;
-  padding: 20px 50px 20px 30px;
-  overflow: scroll;
   height: 100%;
+  padding: 10px 0;
+
+  .parameters {
+    padding: 0 30px;
+  }
 }

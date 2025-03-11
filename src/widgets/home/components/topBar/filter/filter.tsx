@@ -7,6 +7,7 @@ import {
   DrawerDescription,
   DrawerTitle,
   DrawerTrigger,
+  ScrollArea,
 } from '@shared/ui';
 import { ParametersFilter } from '../../parametersFilter';
 import { cn } from '@shared/lib';
@@ -27,7 +28,9 @@ export const Filter: FC<FilterPageProps> = ({ className }) => {
       <DrawerContent className={styles.content}>
         <DrawerTitle className="sr-only" />
         <DrawerDescription className="sr-only" />
-        <ParametersFilter />
+        <ScrollArea>
+          <ParametersFilter className={styles.parameters} />
+        </ScrollArea>
       </DrawerContent>
     </Drawer>
   );

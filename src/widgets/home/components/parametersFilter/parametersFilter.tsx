@@ -11,9 +11,14 @@ import {
 } from '@shared/hooks';
 import { FC } from 'react';
 import styles from './parametersFilter.module.scss';
+import { cn } from '@shared/lib';
 
-export const ParametersFilter: FC = () => {
-  const { ingredients, loading: loadingIngridients } = useFilterIngredients();
+interface ParametersFilterProps {
+  className?: string;
+}
+
+export const ParametersFilter: FC<ParametersFilterProps> = ({ className }) => {
+  const { ingredients, loading: loadingIngredients } = useFilterIngredients();
   const itemsIngredients = ingredients.map((el) => ({
     text: el.name,
     value: String(el.id),
@@ -34,7 +39,7 @@ export const ParametersFilter: FC = () => {
   useQueryFilters(filters);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={cn(styles.wrapper, className)}>
       <CheckboxFilter
         title="Тип теста"
         name="pizzaTypes"
@@ -58,7 +63,7 @@ export const ParametersFilter: FC = () => {
       <CheckboxFilter
         title="Ингредиенты"
         name="ingredients"
-        loading={loadingIngridients}
+        loading={loadingIngredients}
         limit={DEFAULT_VALUES.category.limit}
         defaultItems={itemsIngredients.slice(0, DEFAULT_VALUES.category.limit)}
         items={itemsIngredients}
