@@ -8,7 +8,7 @@ import { Api } from '@shared/services';
 import { Container } from '@shared/ui';
 import { cartFormSchema, CartFormValues } from '@shared/validate';
 import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { FC, useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -22,6 +22,7 @@ import {
 } from './components';
 
 export const Cart: FC = () => {
+  const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const { totalAmount, updateItemQuantity, items, removeCartItem, loading } =
     useCart();
@@ -41,7 +42,7 @@ export const Cart: FC = () => {
 
   useEffect(() => {
     if (items?.length === 0) {
-      redirect(paths.home);
+      router.push(paths.home);
     }
   }, [items]);
 
@@ -62,14 +63,11 @@ export const Cart: FC = () => {
   const onSubmit = async (data: CartFormValues) => {
     try {
       setSubmitting(true);
-      const url = await createOrder(data);
-      toast.error('Заказ успешно оформлен! 📝 Переход на оплату... ', {
+      await createOrder(data);
+      toast.error('Заказ успешно оформлен!', {
         icon: '✅',
       });
-
-      if (url) {
-        location.href = url;
-      }
+      router.push(paths.home);
     } catch (err) {
       console.log(err);
       setSubmitting(false);

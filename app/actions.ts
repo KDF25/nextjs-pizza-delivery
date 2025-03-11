@@ -72,39 +72,17 @@ export async function createOrder(data: CartFormValues) {
         cartId: userCart.id,
       },
     });
+    const form = newOrder(
+      process.env.NEXT_BASE_URL || "",
+          order.id,
+          userCart.totalAmount
+        );
 
-    // const paymentData = await createPayment({
-    //   amount: order.totalAmount,
-    //   orderId: order.id,
-    //   description: 'Оплата заказа #' + order.id,
-    // });
+    await Api.mail.sendMail({
+      to: data?.email,
+      ...form,
+    });
 
-    // if (!paymentData) {
-    //   throw new Error('Payment data not found');
-    // }
-
-    // await prisma.order.update({
-    //   where: {
-    //     id: order.id,
-    //   },
-    //   data: {
-    //     paymentId: paymentData.id,
-    //   },
-    // });
-
-    // const paymentUrl = paymentData.confirmation.confirmation_url;
-
-    const paymentUrl = 'https://your-delivery-app-link.com'
-      const form = newOrder(
-        paymentUrl,
-            order.id,
-            userCart.totalAmount
-          );
-      await Api.mail.sendMail({
-        to: data?.email,
-        ...form,
-      });
-      return paymentUrl
   } catch (err) {
     console.log('[CreateOrder] Server error', err);
   }
