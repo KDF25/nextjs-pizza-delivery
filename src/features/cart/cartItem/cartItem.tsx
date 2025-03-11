@@ -35,11 +35,11 @@ export const CheckoutItem: FC<Props> = ({
     >
       <div className={styles.leftSection}>
         <Image src={imageUrl} />
-        <Info name={name} details={details} />
+        <div className={styles.info}>
+          <Info name={name} details={details} />
+          <Price value={price} />
+        </div>
       </div>
-
-      <Price value={price} />
-
       <div className={styles.rightSection}>
         <CountButton onClick={onClickCountButton} value={quantity} />
         <button type="button" onClick={onClickRemove}>

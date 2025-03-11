@@ -1,23 +1,52 @@
+@import '/src/shared/styles/displays.scss';
+
 .wrapper {
   display: grid;
   grid-auto-flow: row;
   row-gap: 20px;
   margin-top: 40px;
+  padding-bottom: 20px;
+
+  @media (max-width: $display-md) {
+    margin-top: 30px;
+  }
+
+  @media (max-width: $display-sm) {
+    margin-top: 20px;
+  }
 
   .title {
-    font-size: var(--title-xl);
-    font-weight: bold;
+    font-size: var(--title-lg);
+    font-weight: 700;
+
+    @media (max-width: $display-md) {
+      font-size: var(--title-md);
+    }
+
+    @media (max-width: $display-sm) {
+      font-size: var(--title-sm);
+    }
   }
 
   .content {
     display: grid;
-    grid-template-columns: 1fr 450px;
+    grid-template: 1fr / 1fr 450px;
     column-gap: 40px;
+
+    @media (max-width: $display-lg) {
+      grid-template: unset;
+      grid-auto-flow: row;
+      row-gap: 20px;
+    }
 
     .left {
       display: grid;
       grid-auto-flow: row;
       row-gap: 40px;
+
+      @media (max-width: $display-lg) {
+        row-gap: 20px;
+      }
 
       .loading {
         opacity: 0.4;
