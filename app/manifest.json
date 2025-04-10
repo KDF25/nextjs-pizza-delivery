@@ -1,0 +1,63 @@
+{
+    "name": "PizzaRush",
+    "short_name": "PizzaRush",
+    "description": "Быстрая и вкусная доставка пиццы прямо к вашему порогу.",
+    "screenshots": [
+        {
+            "src": "./screens/wide1.jpg",
+            "type": "image/jpeg",
+            "sizes": "800x583",
+            "form_factor": "wide"
+        },
+        {
+            "src": "./screens/wide2.jpg",
+            "type": "image/jpeg",
+            "sizes": "800x583",
+            "form_factor": "wide"
+        },
+        {
+            "src": "./screens/mobile1.jpg",
+            "type": "image/jpeg",
+            "sizes": "530x700",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "./screens/mobile2.jpg",
+            "type": "image/jpeg",
+            "sizes": "530x700",
+            "form_factor": "narrow"
+        }
+    ],
+    "theme_color": "#14213D",
+    "background_color": "#14213D",
+    "orientation": "portrait",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "related_applications": [
+        {
+            "platform": "webapp",
+            "url": "https://pizza-delivery-site.vercel.app/manifest"
+        }
+    ],
+    "icons": [
+        { "src": "icons/192.png", "type": "image/png", "sizes": "192x192" },
+        { "src": "icons/512.png", "type": "image/png", "sizes": "512x512" }
+    ],
+    "display_override": ["window-controls-overlay"],
+    "shortcuts": [
+        {
+        "name": "Создать новый заказ",
+        "url": "/"
+        }
+    ],
+    "launch_handler": {
+        "client_mode": "focus-existing"
+    },
+    "capture_links": "existing_client_event",
+    "url_handlers": [
+        {
+            "origin": "https://pizza-delivery-site.vercel.app"
+        }
+    ]
+}

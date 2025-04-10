@@ -1,22 +1,27 @@
-import type { NextConfig } from "next";
+import withPWA from 'next-pwa';
 const path = require('path');
 
-const nextConfig: NextConfig = {
+const nextConfig: any = { // Используем any для обхода ошибок типов
   sassOptions: {
-    includePaths: [path.resolve(__dirname, 'src/shared/styles')], // Указываем только нужную папку
+    includePaths: [path.resolve(__dirname, 'src/shared/styles')],
     api: 'modern',
     silenceDeprecations: ['legacy-js-api'],
   },
   images: {
     domains: ['media.dodostatic.net'],
   },
-  webpack(config) {
+  webpack(config: any) {
     const stylesPath = path.resolve(__dirname, 'src/shared/styles');
-    console.log('Resolved @styles path:', stylesPath); // Отладка пути
+    console.log('Resolved @styles path:', stylesPath);
     config.resolve.alias['@styles'] = stylesPath;
-    config.resolve.extensions.push('.scss'); // Поддержка .scss файлов
+    config.resolve.extensions.push('.scss');
     return config;
   },
 };
 
-export default nextConfig;
+export default withPWA({
+  dest: 'public',
+  disable: false,
+  register: true,
+  skipWaiting: true,
+})(nextConfig);

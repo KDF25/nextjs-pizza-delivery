@@ -1,4 +1,4 @@
-@import '/src/shared/styles/displays.scss';
+@use '/src/shared/styles/displays.scss' as *;
 
 .topBar {
   position: sticky;
