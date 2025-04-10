@@ -14,13 +14,13 @@ export const metadata: Metadata = {
   description: "My progressive web app built with Next.js",
   manifest: "/manifest.json",
   keywords: ["nextjs", "pwa", "next-pwa"],
-  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#000000" }],
-  viewport:
-    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
-  icons: [
-    { rel: "apple-touch-icon", url: "/icon-192x192.png" },
-    { rel: "icon", url: "/icon-192x192.png" },
-  ],
+  // themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#000000" }],
+  // viewport:
+  //   "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+  // icons: [
+  //   { rel: "apple-touch-icon", url: "/icon-192x192.png" },
+  //   { rel: "icon", url: "/icon-192x192.png" },
+  // ],
 };
 export default function RootLayout({
   children,
