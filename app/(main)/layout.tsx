@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: 'PizzaRush',
     images: [
       {
-        url: '/pizzaOG.png',
+        url: './pizzaOG.jpg',
         width: 800,
         height: 600,
         alt: 'PizzaRush',
