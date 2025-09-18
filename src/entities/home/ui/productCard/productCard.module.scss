@@ -18,8 +18,11 @@
       background: hsl(var(--secondary));
 
       img {
-        // max-width: 215px;
-        // max-height: 215px;
+        transition: transform 0.3s ease-in-out;
+
+        &:hover {
+          transform: scale(1.05);
+        }
       }
     }
 

@@ -12,7 +12,13 @@ export const categories = [
     name: 'Коктейли',
   },
   {
-    name: 'Напитки',
+    name: 'Кофе',
+  },
+  {
+    name: 'Соусы',
+  },
+  {
+    name: 'Десерты',
   },
 ];
 
@@ -249,5 +255,51 @@ export const products = [
     imageUrl:
       'https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.webp',
     categoryId: 5,
+  },
+
+  // Соусы
+  {
+    name: 'Соус Барбекю',
+    imageUrl:
+      'https://media.dodostatic.net/image/r:292x292/11ef8f7f66748cbb97328626dea4a1e3.webp',
+    categoryId: 6,
+  },
+  {
+    name: 'Соус чесночный',
+    imageUrl:
+      'https://media.dodostatic.net/image/r:292x292/11ef8b09b71eb29da994b8d106168121.webp',
+    categoryId: 6,
+  },
+  {
+    name: 'Соус сырный',
+    imageUrl:
+      'https://media.dodostatic.net/image/r:292x292/11ef8f7f9bf8d9bdb9380941b22df9cc.webp',
+    categoryId: 6,
+  },
+  {
+    name: 'Томатный кетчуп',
+    imageUrl:
+      'https://media.dodostatic.net/image/r:292x292/11ef9027df51298b82347168ac2addf1.webp',
+    categoryId: 6,
+  },
+
+  // Десерты
+  {
+    name: 'Черничный маффин',
+    imageUrl:
+      'https://media.dodostatic.net/image/r:292x292/01979d0c36dc70158f840cbdbded25b6.webp',
+    categoryId: 7,
+  },
+  {
+    name: 'Карамельный чизкейк',
+    imageUrl:
+      'https://media.dodostatic.net/image/r:292x292/0197782e41f07012a2dfcb94c6e57bfd.webp',
+    categoryId: 7,
+  },
+  {
+    name: 'Банановый чизкейк',
+    imageUrl:
+      'https://media.dodostatic.net/image/r:292x292/11ef81843e2a05a5a8bd5b26863c153d.webp',
+    categoryId: 7,
   },
 ];

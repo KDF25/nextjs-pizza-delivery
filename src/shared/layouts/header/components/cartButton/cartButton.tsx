@@ -38,7 +38,7 @@ export const CartButton: React.FC<Props> = ({ className, isFull = true }) => {
                 className={styles.cart__icon}
                 strokeWidth={2}
               />
-              <b>{items.length}</b>
+              <b>{items?.length}</b>
             </div>
             <ArrowRight size={20} className={styles.arrow__icon} />
           </Button>
@@ -54,7 +54,7 @@ export const CartButton: React.FC<Props> = ({ className, isFull = true }) => {
                 className={styles.cart__icon}
                 strokeWidth={2}
               />
-              <b>{items.length}</b>
+              <b>{items?.length}</b>
             </div>
           </Button>
         )}

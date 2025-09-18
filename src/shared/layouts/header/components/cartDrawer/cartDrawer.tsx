@@ -49,7 +49,7 @@ export const CartDrawer: FC<PropsWithChildren> = ({ children }) => {
           {totalAmount > 0 && (
             <SheetHeader>
               В корзине{' '}
-              <span className={styles.itemCount}>{items.length} товара</span>
+              <span className={styles.itemCount}>{items?.length} товара</span>
             </SheetHeader>
           )}
 

@@ -10,6 +10,7 @@ import {
   DialogDescription,
   DialogTitle,
 } from '@shared/ui';
+import { Github, Globe } from 'lucide-react';
 import { signIn } from 'next-auth/react';
 import React from 'react';
 
@@ -53,10 +54,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
             type="button"
             className="gap-2 h-12 p-2 flex-1"
           >
-            <img
-              className="w-6 h-6"
-              src="https://github.githubassets.com/favicons/favicon.svg"
-            />
+            <Github className="w-6 h-6" />
             GitHub
           </Button>
 
@@ -71,10 +69,7 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
             type="button"
             className="gap-2 h-12 p-2 flex-1"
           >
-            <img
-              className="w-6 h-6"
-              src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
-            />
+            <Globe className="w-6 h-6" />
             Google
           </Button>
         </div>

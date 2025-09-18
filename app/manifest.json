@@ -46,12 +46,6 @@
         { "src": "icons/512.png", "type": "image/png", "sizes": "512x512" }
     ],
     "display_override": ["window-controls-overlay"],
-    "shortcuts": [
-        {
-        "name": "Создать новый заказ",
-        "url": "/"
-        }
-    ],
     "launch_handler": {
         "client_mode": "focus-existing"
     },

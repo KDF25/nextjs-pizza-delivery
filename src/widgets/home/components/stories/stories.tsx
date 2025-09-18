@@ -3,8 +3,15 @@
 import { cn } from '@/shared/lib/utils';
 import { IStory } from '@entities/stories';
 import { Api } from '@shared/services';
-import { Container, Skeleton } from '@shared/ui';
-import { X } from 'lucide-react';
+import {
+  Container,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+  DialogTrigger,
+  Skeleton,
+} from '@shared/ui';
 import { FC, useEffect, useState } from 'react';
 import ReactStories from 'react-insta-stories';
 import styles from './stories.module.scss';
@@ -37,7 +44,6 @@ const calculateDimensions = (screenWidth: number, screenHeight: number) => {
 export const Stories: FC<Props> = ({ className }) => {
   const [stories, setStories] = useState<IStory[]>([]);
   const [open, setOpen] = useState(false);
-  const [selectedStory, setSelectedStory] = useState<IStory>();
   const [componentWidth, setComponentWidth] = useState(520);
   const [componentHeight, setComponentHeight] = useState(800);
 
@@ -76,12 +82,6 @@ export const Stories: FC<Props> = ({ className }) => {
     };
   }, [open]);
 
-  const onClickStory = (story: IStory) => {
-    setSelectedStory(story);
-    if (story.items.length > 0) {
-      setOpen(true);
-    }
-  };
   return (
     <Container className={styles.container}>
       <div className={cn(styles.wrapper, className)}>
@@ -93,37 +93,41 @@ export const Stories: FC<Props> = ({ className }) => {
                 className="min-w-[150px] max-w-[200px] aspect-[4/5]"
               />
             ))}
-          {stories.slice(0, 6).map((story) => (
-            <img
-              key={story.id}
-              onClick={() => onClickStory(story)}
-              className={styles.card}
-              height={250}
-              width={200}
-              src={story.previewImageUrl}
-            />
+          {stories?.map((story, index) => (
+            <div key={index}>
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <img
+                    key={story.id}
+                    onClick={() => setOpen(true)}
+                    className={styles.card}
+                    height={250}
+                    width={200}
+                    alt={story.previewImageUrl}
+                    src={story.previewImageUrl}
+                  />
+                </DialogTrigger>
+                <DialogContent className=" !p-0 !border-none">
+                  <DialogTitle className="sr-only">Stories</DialogTitle>
+                  <DialogDescription className="sr-only">
+                    React Stories{' '}
+                  </DialogDescription>
+                  <ReactStories
+                    onAllStoriesEnd={() => setOpen(false)}
+                    stories={
+                      story?.items.map((item) => ({
+                        url: item.sourceUrl,
+                      })) || []
+                    }
+                    defaultInterval={3000}
+                    width={componentWidth}
+                    height={componentHeight}
+                  />
+                </DialogContent>
+              </Dialog>
+            </div>
           ))}
         </div>
-        {open && (
-          <div className={styles.stories__wrapper}>
-            <div className={styles.stories}>
-              <button className={styles.close} onClick={() => setOpen(false)}>
-                <X />
-              </button>
-              <ReactStories
-                onAllStoriesEnd={() => setOpen(false)}
-                stories={
-                  selectedStory?.items.map((item) => ({
-                    url: item.sourceUrl,
-                  })) || []
-                }
-                defaultInterval={3000}
-                width={componentWidth}
-                height={componentHeight}
-              />
-            </div>
-          </div>
-        )}
       </div>
     </Container>
   );

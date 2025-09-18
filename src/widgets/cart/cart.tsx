@@ -35,7 +35,7 @@ export const Cart: FC = () => {
       firstName: '',
       lastName: '',
       phone: '',
-      address: '',
+      address: 'Москва',
       comment: '',
     },
   });

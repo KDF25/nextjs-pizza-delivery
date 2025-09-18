@@ -1,10 +1,9 @@
 export const CATEGORIES = [
   { id: 1, name: 'Пиццы' },
-  { id: 2, name: 'Комбо' },
+  { id: 2, name: 'Завтрак' },
   { id: 3, name: 'Закуски' },
-  { id: 4, name: 'Десерты' },
-  { id: 5, name: 'Напитки' },
+  { id: 4, name: 'Коктейли' },
+  { id: 5, name: 'Кофе' },
   { id: 6, name: 'Соусы' },
-  { id: 7, name: 'Салаты' },
-  { id: 8, name: 'Акции' },
+  { id: 7, name: 'Десерты' },
 ];

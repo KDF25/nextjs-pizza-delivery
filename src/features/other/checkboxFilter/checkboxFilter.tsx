@@ -93,7 +93,7 @@ export const CheckboxFilter: FC<CheckboxFilterProps> = ({
         ))}
       </div>
 
-      {items.length > limit && (
+      {items?.length > limit && (
         <div
           className={
             showAll
